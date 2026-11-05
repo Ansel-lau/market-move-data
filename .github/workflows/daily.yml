@@ -1,1 +1,52 @@
+name: Daily market data
 
+on:
+  schedule:
+    # 22:17 UTC, Monday to Friday = 6:17 am Singapore, Tuesday to Saturday.
+    - cron: "17 22 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Session date YYYY-MM-DD (leave blank for the latest)"
+        required: false
+        default: ""
+      backfill:
+        description: "Also build this many earlier sessions (e.g. 20)"
+        required: false
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency: daily-data
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install libraries
+        run: pip install -r requirements.txt
+      - name: Build the data files
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          DATE_INPUT: ${{ inputs.date }}
+          BACKFILL_INPUT: ${{ inputs.backfill }}
+        run: |
+          ARGS=""
+          if [ -n "$DATE_INPUT" ]; then ARGS="$ARGS --date $DATE_INPUT"; fi
+          if [ -n "$BACKFILL_INPUT" ] && [ "$BACKFILL_INPUT" != "0" ]; then ARGS="$ARGS --backfill $BACKFILL_INPUT"; fi
+          python daily_data.py $ARGS
+      - name: Save the files to the repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Market data $(date -u +%Y-%m-%d)"
+          git push
