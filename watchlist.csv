@@ -1,0 +1,21 @@
+ticker,name,class,symbol,market,sector,peers,news
+GOOG,Alphabet (Class C),stock,GOOG,SPY,XLC,META MSFT AMZN,yes
+META,Meta Platforms,stock,META,SPY,XLC,GOOG SNAP PINS,yes
+MSFT,Microsoft,stock,MSFT,SPY,XLK,GOOG AMZN ORCL,yes
+V,Visa,stock,V,SPY,XLF,MA AXP PYPL,yes
+NBIS,Nebius Group,stock,NBIS,SPY,SMH,CRWV ORCL NVDA,yes
+CRWV,CoreWeave,stock,CRWV,SPY,SMH,NBIS ORCL NVDA,yes
+CHA,Chagee Holdings (ADS),stock,CHA,SPY,MCHI,LKNCY SBUX,yes
+SCHD,Schwab US Dividend Equity ETF,etf,SCHD,SPY,IWD,VYM DVY,no
+VEA,Vanguard FTSE Developed Markets ETF,etf,VEA,SPY,DX-Y.NYB,EFA IEFA,no
+BUG,Global X Cybersecurity ETF,etf,BUG,SPY,IGV,CIBR HACK,no
+SPY,SPDR S&P 500 ETF,etf,SPY,,,QQQ IWM,no
+GOLD,Gold (front-month futures),commodity,GC=F,DX-Y.NYB,,SI=F GLD,no
+COPPER,Copper (COMEX front-month),commodity,HG=F,DX-Y.NYB,MCHI,FCX COPX,no
+OIL,Brent crude (front-month),commodity,BZ=F,DX-Y.NYB,,CL=F NG=F XLE,no
+US10Y,US 10-year Treasury yield,rate,^TNX,,,^FVX ^TYX 2YY=F,no
+US2Y,US 2-year Treasury yield,rate,2YY=F,,,^TNX,no
+FEDFUNDS,Fed funds target range (upper bound),policy,fred:DFEDTARU,,,,no
+DXY,US Dollar Index,fx,DX-Y.NYB,,,EURUSD=X JPY=X,no
+USDSGD,USD/SGD,fx,SGD=X,,,DX-Y.NYB CNH=X,no
+BTC,Bitcoin,crypto,BTC-USD,QQQ,,ETH-USD COIN MSTR,no
