@@ -1,0 +1,913 @@
+{
+ "schema": 1,
+ "session_date": "2026-10-21",
+ "generated_at_utc": "2026-11-05 18:58",
+ "sources": {
+  "prices": "Yahoo Finance via yfinance (adjusted closes)",
+  "rates": "FRED, Federal Reserve Bank of St. Louis",
+  "headlines": "Finnhub"
+ },
+ "method": {
+  "move": "close on session_date vs the asset's previous close",
+  "sigma_window_days": 60,
+  "attribution": "two-factor OLS on the 252 common trading days before the session; NA if < 120 days or R^2 < 0.10",
+  "units": "move_pct in %, move_bp in basis points, components in percentage points (pp)"
+ },
+ "backdrop": [
+  {
+   "name": "S&P 500 (SPY)",
+   "symbol": "SPY",
+   "close": 773.09,
+   "move_pct": 0.5253
+  },
+  {
+   "name": "Nasdaq 100 (QQQ)",
+   "symbol": "QQQ",
+   "close": 725.2,
+   "move_pct": 1.0549
+  },
+  {
+   "name": "VIX",
+   "symbol": "^VIX",
+   "close": 16.68,
+   "move_pct": -3.6395
+  },
+  {
+   "name": "US 10Y yield",
+   "symbol": "^TNX",
+   "close": 5.146,
+   "move_bp": 2.9
+  },
+  {
+   "name": "US Dollar Index",
+   "symbol": "DX-Y.NYB",
+   "close": 101.78,
+   "move_pct": 0.0491
+  },
+  {
+   "name": "Brent",
+   "symbol": "BZ=F",
+   "close": 108.82,
+   "move_pct": 0.0276
+  },
+  {
+   "name": "WTI",
+   "symbol": "CL=F",
+   "close": 97.15,
+   "move_pct": -4.5584
+  },
+  {
+   "name": "Gold",
+   "symbol": "GC=F",
+   "close": 4150.0,
+   "move_pct": 0.1786
+  },
+  {
+   "name": "Bitcoin",
+   "symbol": "BTC-USD",
+   "close": 84011.9688,
+   "move_pct": 1.2912
+  }
+ ],
+ "sectors": [
+  {
+   "etf": "XLK",
+   "sector": "Technology",
+   "move_pct": 1.6717
+  },
+  {
+   "etf": "XLI",
+   "sector": "Industrials",
+   "move_pct": 0.9053
+  },
+  {
+   "etf": "XLF",
+   "sector": "Financials",
+   "move_pct": 0.5743
+  },
+  {
+   "etf": "XLU",
+   "sector": "Utilities",
+   "move_pct": 0.2865
+  },
+  {
+   "etf": "XLE",
+   "sector": "Energy",
+   "move_pct": 0.2795
+  },
+  {
+   "etf": "XLB",
+   "sector": "Materials",
+   "move_pct": 0.1757
+  },
+  {
+   "etf": "XLY",
+   "sector": "Consumer discretionary",
+   "move_pct": 0.026
+  },
+  {
+   "etf": "XLV",
+   "sector": "Health care",
+   "move_pct": -0.4894
+  },
+  {
+   "etf": "XLP",
+   "sector": "Consumer staples",
+   "move_pct": -0.7293
+  },
+  {
+   "etf": "XLRE",
+   "sector": "Real estate",
+   "move_pct": -0.7551
+  },
+  {
+   "etf": "XLC",
+   "sector": "Communication services",
+   "move_pct": -1.1072
+  }
+ ],
+ "assets": [
+  {
+   "ticker": "GOOG",
+   "name": "Alphabet (Class C)",
+   "class": "stock",
+   "symbol": "GOOG",
+   "notes": [],
+   "close": 330.95,
+   "prev_date": "2026-10-20",
+   "move_pct": -1.6201,
+   "sigma": -0.925,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLC",
+    "move_pct": -1.62,
+    "interval_start": "2026-10-20",
+    "market_pp": 0.7,
+    "sector_pp": -1.2,
+    "specific_pp": -1.1,
+    "beta_market": 1.36,
+    "beta_sector": 0.87,
+    "r2": 0.454,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "META": {
+     "move_pct": 0.471
+    },
+    "MSFT": {
+     "move_pct": 0.2031
+    },
+    "AMZN": {
+     "move_pct": -0.099
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-10-28",
+     "time": "after market close",
+     "eps_estimate": 3.1081,
+     "eps_actual": 2.67
+    }
+   ]
+  },
+  {
+   "ticker": "META",
+   "name": "Meta Platforms",
+   "class": "stock",
+   "symbol": "META",
+   "notes": [],
+   "close": 697.52,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.471,
+   "sigma": 0.1609,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLC",
+    "move_pct": 0.47,
+    "interval_start": "2026-10-20",
+    "market_pp": 0.8,
+    "sector_pp": -2.3,
+    "specific_pp": 2.0,
+    "beta_market": 1.48,
+    "beta_sector": 1.61,
+    "r2": 0.47,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "GOOG": {
+     "move_pct": -1.6201
+    },
+    "SNAP": {
+     "move_pct": -0.4702
+    },
+    "PINS": {
+     "move_pct": -0.1305
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-10-21",
+     "time": "after market close",
+     "eps_estimate": 6.8723,
+     "eps_actual": 7.4
+    }
+   ]
+  },
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "class": "stock",
+   "symbol": "MSFT",
+   "notes": [],
+   "close": 532.95,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.2031,
+   "sigma": 0.082,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLK",
+    "move_pct": 0.2,
+    "interval_start": "2026-10-20",
+    "market_pp": 0.5,
+    "sector_pp": 0.1,
+    "specific_pp": -0.4,
+    "beta_market": 1.0,
+    "beta_sector": 0.1,
+    "r2": 0.152,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "GOOG": {
+     "move_pct": -1.6201
+    },
+    "AMZN": {
+     "move_pct": -0.099
+    },
+    "ORCL": {
+     "move_pct": -1.5327
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-10-28",
+     "time": "after market close",
+     "eps_estimate": 4.824,
+     "eps_actual": 4.89
+    }
+   ]
+  },
+  {
+   "ticker": "V",
+   "name": "Visa",
+   "class": "stock",
+   "symbol": "V",
+   "notes": [],
+   "close": 407.85,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.3148,
+   "sigma": 0.2712,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLF",
+    "move_pct": 0.31,
+    "interval_start": "2026-10-20",
+    "market_pp": 0.2,
+    "sector_pp": 0.3,
+    "specific_pp": -0.1,
+    "beta_market": 0.29,
+    "beta_sector": 1.1,
+    "r2": 0.406,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "MA": {
+     "move_pct": 0.3546
+    },
+    "AXP": {
+     "move_pct": 1.6555
+    },
+    "PYPL": {
+     "move_pct": 0.105
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-10-27",
+     "time": "after market close",
+     "eps_estimate": 3.5055,
+     "eps_actual": 3.48
+    }
+   ]
+  },
+  {
+   "ticker": "NBIS",
+   "name": "Nebius Group",
+   "class": "stock",
+   "symbol": "NBIS",
+   "notes": [],
+   "close": 171.57,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.07,
+   "sigma": 0.0089,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "SMH",
+    "move_pct": 0.07,
+    "interval_start": "2026-10-20",
+    "market_pp": 2.0,
+    "sector_pp": 0.8,
+    "specific_pp": -2.8,
+    "beta_market": 3.89,
+    "beta_sector": 1.44,
+    "r2": 0.316,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "CRWV": {
+     "move_pct": -0.499
+    },
+    "ORCL": {
+     "move_pct": -1.5327
+    },
+    "NVDA": {
+     "move_pct": 2.5408
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-10-22 11:31",
+     "source": "Yahoo",
+     "headline": "Nebius Stock Alert: I’m Watching This 43% Crash as AI Bubble Fears Return",
+     "url": "https://finnhub.io/api/news?id=04be3072c19c667c5f55deb974c687b8bd3c7486b7cc676cb6061ebdd8d4d6d5"
+    },
+    {
+     "time_utc": "2026-10-22 11:27",
+     "source": "Benzinga",
+     "headline": "Jensen Huang Downplays Memory Glut Fears: Will Micron Rebound Next?",
+     "url": "https://finnhub.io/api/news?id=56bd382938c0ec83321bc5f85c7888aa622ac8196ca00c095f02bcfc5ad949bd"
+    },
+    {
+     "time_utc": "2026-10-22 11:00",
+     "source": "Yahoo",
+     "headline": "Nebius secures $3.5 billion financing facility with Citi",
+     "url": "https://finnhub.io/api/news?id=3de9c4a36e5808763f4d099dd6d6354b9ef150300281ab480da83a4ff5339d5e"
+    },
+    {
+     "time_utc": "2026-10-22 09:14",
+     "source": "Benzinga",
+     "headline": "What's Going On With Nebius Stock Thursday?",
+     "url": "https://finnhub.io/api/news?id=4393e37efa912ef4e33989f2c6903ff86f1733d4d69b5bb3014483064b3111d5"
+    },
+    {
+     "time_utc": "2026-10-22 07:06",
+     "source": "Benzinga",
+     "headline": "Nebius Enters $3.5B Senior Secured Facility Provided By Citi; Increases Flexibility Over Timing And Structure Of Longer-Term Financing To Fuel Growth In 2027 And Beyond",
+     "url": "https://finnhub.io/api/news?id=1e471b0256afa31fcab8e066823a21f7d470e3b85e72fbf8f594d24d997529b7"
+    },
+    {
+     "time_utc": "2026-10-22 07:01",
+     "source": "Yahoo",
+     "headline": "RKLB Is Among Nasdaq’s Top 5 Losers So Far This Month, Yet Analysts See 90% Upside — Can Neutron Justify Its SpaceX Premium?",
+     "url": "https://finnhub.io/api/news?id=4f5e53531702b6fd12aa424dba5a8ffdfe92e41b9d93ba4daeb1f892ae8f3f67"
+    },
+    {
+     "time_utc": "2026-10-22 03:19",
+     "source": "Yahoo",
+     "headline": "Why Is Nebius Group (NBIS) Expanding Its AI Infrastructure Reach?",
+     "url": "https://finnhub.io/api/news?id=e0fd413824761f970a20d4c824bae89a860ee4d116ac3ed2d6bfeca6b00b8d4d"
+    },
+    {
+     "time_utc": "2026-10-21 21:05",
+     "source": "Yahoo",
+     "headline": "Did SpaceX Just Save CoreWeave, Nebius, and the Neocloud Sector?",
+     "url": "https://finnhub.io/api/news?id=1199e8ae512936a699dbfbd76b145185066fb74d8f2f477c643540aaff843fb3"
+    },
+    {
+     "time_utc": "2026-10-21 17:02",
+     "source": "Yahoo",
+     "headline": "Jim Cramer Doubles Down On CoreWeave (CRWV), Sort Of",
+     "url": "https://finnhub.io/api/news?id=2d33524f6206c1a88221a90171f9a9f7b18f6a9e5e2a617b7b118318729430d4"
+    },
+    {
+     "time_utc": "2026-10-21 16:45",
+     "source": "Yahoo",
+     "headline": "Nebius Vs. DigitalOcean: The Cash Positive Neocloud Arguably Looks Better",
+     "url": "https://finnhub.io/api/news?id=8bc3e5dcb16395f9ff6a3cf96422b817842f078502d9a97a42e565adad068d5e"
+    }
+   ],
+   "earnings": [
+    {
+     "date": "2026-11-12",
+     "time": "unknown",
+     "eps_estimate": -0.7021,
+     "eps_actual": null
+    }
+   ]
+  },
+  {
+   "ticker": "CRWV",
+   "name": "CoreWeave",
+   "class": "stock",
+   "symbol": "CRWV",
+   "notes": [],
+   "close": 61.82,
+   "prev_date": "2026-10-20",
+   "move_pct": -0.499,
+   "sigma": -0.0751,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "SMH",
+    "move_pct": -0.5,
+    "interval_start": "2026-10-20",
+    "market_pp": 1.9,
+    "sector_pp": 0.6,
+    "specific_pp": -3.0,
+    "beta_market": 3.56,
+    "beta_sector": 1.05,
+    "r2": 0.298,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "NBIS": {
+     "move_pct": 0.07
+    },
+    "ORCL": {
+     "move_pct": -1.5327
+    },
+    "NVDA": {
+     "move_pct": 2.5408
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-11-10",
+     "time": "after market close",
+     "eps_estimate": -1.1831,
+     "eps_actual": null
+    }
+   ]
+  },
+  {
+   "ticker": "CHA",
+   "name": "Chagee Holdings (ADS)",
+   "class": "stock",
+   "symbol": "CHA",
+   "notes": [],
+   "close": 12.95,
+   "prev_date": "2026-10-20",
+   "move_pct": 3.766,
+   "sigma": 1.3672,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "MCHI",
+    "move_pct": 3.77,
+    "interval_start": "2026-10-20",
+    "market_pp": null,
+    "sector_pp": null,
+    "specific_pp": null,
+    "beta_market": 0.25,
+    "beta_sector": 0.42,
+    "r2": 0.019,
+    "observations": 252,
+    "na_reason": "R^2 0.019 is below 0.1: the benchmarks explain too little to split the move",
+    "notes": []
+   },
+   "peers": {
+    "LKNCY": {
+     "move_pct": -1.7272
+    },
+    "SBUX": {
+     "move_pct": -0.2918
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-10-21 08:22",
+     "source": "Benzinga",
+     "headline": "Jefferies Upgrades Chagee Holdings to Buy, Raises Price Target to $14.9",
+     "url": "https://finnhub.io/api/news?id=f428c285b882fa228d6d08a9a16d91e1d3ea960d6368c05580ea85c4940bb809"
+    }
+   ],
+   "earnings": []
+  },
+  {
+   "ticker": "SCHD",
+   "name": "Schwab US Dividend Equity ETF",
+   "class": "etf",
+   "symbol": "SCHD",
+   "notes": [],
+   "close": 34.66,
+   "prev_date": "2026-10-20",
+   "move_pct": -0.0865,
+   "sigma": -0.1247,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "IWD",
+    "move_pct": -0.09,
+    "interval_start": "2026-10-20",
+    "market_pp": 0.1,
+    "sector_pp": -0.2,
+    "specific_pp": 0.0,
+    "beta_market": 0.22,
+    "beta_sector": 1.28,
+    "r2": 0.651,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "VYM": {
+     "move_pct": 0.1862
+    },
+    "DVY": {
+     "move_pct": -0.0878
+    }
+   }
+  },
+  {
+   "ticker": "VEA",
+   "name": "Vanguard FTSE Developed Markets ETF",
+   "class": "etf",
+   "symbol": "VEA",
+   "notes": [],
+   "close": 70.12,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.4873,
+   "sigma": 0.5394,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "DX-Y.NYB",
+    "move_pct": 0.49,
+    "interval_start": "2026-10-20",
+    "market_pp": 0.6,
+    "sector_pp": -0.1,
+    "specific_pp": 0.0,
+    "beta_market": 1.11,
+    "beta_sector": -1.13,
+    "r2": 0.745,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "EFA": {
+     "move_pct": 0.3568
+    },
+    "IEFA": {
+     "move_pct": 0.3205
+    }
+   }
+  },
+  {
+   "ticker": "BUG",
+   "name": "Global X Cybersecurity ETF",
+   "class": "etf",
+   "symbol": "BUG",
+   "notes": [],
+   "close": 46.93,
+   "prev_date": "2026-10-20",
+   "move_pct": 3.7815,
+   "sigma": 1.2821,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "IGV",
+    "move_pct": 3.78,
+    "interval_start": "2026-10-20",
+    "market_pp": 0.6,
+    "sector_pp": 1.2,
+    "specific_pp": 2.0,
+    "beta_market": 1.13,
+    "beta_sector": 1.03,
+    "r2": 0.719,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "CIBR": {
+     "move_pct": 2.7191
+    },
+    "HACK": {
+     "move_pct": 3.2353
+    }
+   }
+  },
+  {
+   "ticker": "SPY",
+   "name": "SPDR S&P 500 ETF",
+   "class": "etf",
+   "symbol": "SPY",
+   "notes": [],
+   "close": 773.09,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.5253,
+   "sigma": 0.7601,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "QQQ": {
+     "move_pct": 1.0549
+    },
+    "IWM": {
+     "move_pct": 0.2538
+    }
+   }
+  },
+  {
+   "ticker": "GOLD",
+   "name": "Gold (front-month futures)",
+   "class": "commodity",
+   "symbol": "GC=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 4150.0,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.1786,
+   "sigma": 0.1372,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": null,
+    "move_pct": 0.18,
+    "interval_start": "2026-10-20",
+    "market_pp": -0.1,
+    "sector_pp": null,
+    "specific_pp": 0.3,
+    "beta_market": -2.08,
+    "beta_sector": null,
+    "r2": 0.14,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "SI=F": {
+     "move_pct": -0.4922
+    },
+    "GLD": {
+     "move_pct": 0.3442
+    }
+   }
+  },
+  {
+   "ticker": "COPPER",
+   "name": "Copper (COMEX front-month)",
+   "class": "commodity",
+   "symbol": "HG=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 6.543,
+   "prev_date": "2026-10-20",
+   "move_pct": -0.3579,
+   "sigma": -0.28,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": "MCHI",
+    "move_pct": -0.36,
+    "interval_start": "2026-10-20",
+    "market_pp": -0.1,
+    "sector_pp": -1.0,
+    "specific_pp": 0.7,
+    "beta_market": -1.77,
+    "beta_sector": 0.6,
+    "r2": 0.261,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "FCX": {
+     "move_pct": 0.0436
+    },
+    "COPX": {
+     "move_pct": -1.4277
+    }
+   }
+  },
+  {
+   "ticker": "OIL",
+   "name": "Brent crude (front-month)",
+   "class": "commodity",
+   "symbol": "BZ=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 108.82,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.0276,
+   "sigma": 0.01,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": null,
+    "move_pct": 0.03,
+    "interval_start": "2026-10-20",
+    "market_pp": null,
+    "sector_pp": null,
+    "specific_pp": null,
+    "beta_market": 2.28,
+    "beta_sector": null,
+    "r2": 0.047,
+    "observations": 252,
+    "na_reason": "R^2 0.047 is below 0.1: the benchmarks explain too little to split the move",
+    "notes": []
+   },
+   "peers": {
+    "CL=F": {
+     "move_pct": -4.5584
+    },
+    "NG=F": {
+     "move_pct": -5.8387
+    },
+    "XLE": {
+     "move_pct": 0.2795
+    }
+   }
+  },
+  {
+   "ticker": "US10Y",
+   "name": "US 10-year Treasury yield",
+   "class": "rate",
+   "symbol": "^TNX",
+   "notes": [],
+   "close": 5.146,
+   "prev_date": "2026-10-20",
+   "move_bp": 2.9,
+   "sigma": 0.648,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "^FVX": {
+     "move_bp": 3.7
+    },
+    "^TYX": {
+     "move_bp": 1.4
+    },
+    "2YY=F": {
+     "move_bp": 0.0
+    }
+   }
+  },
+  {
+   "ticker": "US2Y",
+   "name": "US 2-year Treasury yield",
+   "class": "rate",
+   "symbol": "2YY=F",
+   "notes": [],
+   "close": 4.75,
+   "prev_date": "2026-10-20",
+   "move_bp": 0.0,
+   "sigma": 0.0,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "^TNX": {
+     "move_bp": 2.9
+    }
+   }
+  },
+  {
+   "ticker": "FEDFUNDS",
+   "name": "Fed funds target range (upper bound)",
+   "class": "policy",
+   "symbol": "fred:DFEDTARU",
+   "notes": [
+    "FRED data unavailable in this run."
+   ]
+  },
+  {
+   "ticker": "DXY",
+   "name": "US Dollar Index",
+   "class": "fx",
+   "symbol": "DX-Y.NYB",
+   "notes": [],
+   "close": 101.78,
+   "prev_date": "2026-10-20",
+   "move_pct": 0.0491,
+   "sigma": 0.1543,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "EURUSD=X": {
+     "move_pct": 0.0977
+    },
+    "JPY=X": {
+     "move_pct": -0.1609
+    }
+   }
+  },
+  {
+   "ticker": "USDSGD",
+   "name": "USD/SGD",
+   "class": "fx",
+   "symbol": "SGD=X",
+   "notes": [],
+   "close": 1.2779,
+   "prev_date": "2026-10-20",
+   "move_pct": -0.1422,
+   "sigma": -0.7381,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "DX-Y.NYB": {
+     "move_pct": 0.0491
+    }
+   }
+  },
+  {
+   "ticker": "BTC",
+   "name": "Bitcoin",
+   "class": "crypto",
+   "symbol": "BTC-USD",
+   "notes": [
+    "Crypto trades 24/7; the move is close-to-close on Yahoo's UTC daily bars and the latest bar may be partial."
+   ],
+   "close": 84011.9688,
+   "prev_date": "2026-10-20",
+   "move_pct": 1.2912,
+   "sigma": 0.7069,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "QQQ",
+    "sector": null,
+    "move_pct": 1.29,
+    "interval_start": "2026-10-20",
+    "market_pp": 1.0,
+    "sector_pp": null,
+    "specific_pp": 0.3,
+    "beta_market": 0.97,
+    "beta_sector": null,
+    "r2": 0.196,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "ETH-USD": {
+     "move_pct": 0.9823
+    },
+    "COIN": {
+     "move_pct": 3.6465
+    },
+    "MSTR": {
+     "move_pct": 7.5392
+    }
+   }
+  }
+ ],
+ "fred": {},
+ "market_news": [],
+ "errors": [
+  "FRED DGS2: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DGS10: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFII10: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFEDTARU: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFEDTARL: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)"
+ ]
+}

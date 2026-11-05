@@ -1,0 +1,974 @@
+{
+ "schema": 1,
+ "session_date": "2026-10-23",
+ "generated_at_utc": "2026-11-05 18:58",
+ "sources": {
+  "prices": "Yahoo Finance via yfinance (adjusted closes)",
+  "rates": "FRED, Federal Reserve Bank of St. Louis",
+  "headlines": "Finnhub"
+ },
+ "method": {
+  "move": "close on session_date vs the asset's previous close",
+  "sigma_window_days": 60,
+  "attribution": "two-factor OLS on the 252 common trading days before the session; NA if < 120 days or R^2 < 0.10",
+  "units": "move_pct in %, move_bp in basis points, components in percentage points (pp)"
+ },
+ "backdrop": [
+  {
+   "name": "S&P 500 (SPY)",
+   "symbol": "SPY",
+   "close": 759.97,
+   "move_pct": -0.5223
+  },
+  {
+   "name": "Nasdaq 100 (QQQ)",
+   "symbol": "QQQ",
+   "close": 704.4,
+   "move_pct": -0.0099
+  },
+  {
+   "name": "VIX",
+   "symbol": "^VIX",
+   "close": 19.45,
+   "move_pct": 2.207
+  },
+  {
+   "name": "US 10Y yield",
+   "symbol": "^TNX",
+   "close": 4.988,
+   "move_bp": 3.5
+  },
+  {
+   "name": "US Dollar Index",
+   "symbol": "DX-Y.NYB",
+   "close": 101.81,
+   "move_pct": 0.1968
+  },
+  {
+   "name": "Brent",
+   "symbol": "BZ=F",
+   "close": 116.72,
+   "move_pct": 3.1369
+  },
+  {
+   "name": "WTI",
+   "symbol": "CL=F",
+   "close": 103.27,
+   "move_pct": 3.8202
+  },
+  {
+   "name": "Gold",
+   "symbol": "GC=F",
+   "close": 4007.8999,
+   "move_pct": -1.293
+  },
+  {
+   "name": "Bitcoin",
+   "symbol": "BTC-USD",
+   "close": 81074.1875,
+   "move_pct": -0.2923
+  }
+ ],
+ "sectors": [
+  {
+   "etf": "XLE",
+   "sector": "Energy",
+   "move_pct": 2.6047
+  },
+  {
+   "etf": "XLK",
+   "sector": "Technology",
+   "move_pct": 0.4881
+  },
+  {
+   "etf": "XLRE",
+   "sector": "Real estate",
+   "move_pct": 0.1176
+  },
+  {
+   "etf": "XLU",
+   "sector": "Utilities",
+   "move_pct": -0.7231
+  },
+  {
+   "etf": "XLB",
+   "sector": "Materials",
+   "move_pct": -0.7351
+  },
+  {
+   "etf": "XLV",
+   "sector": "Health care",
+   "move_pct": -1.1142
+  },
+  {
+   "etf": "XLI",
+   "sector": "Industrials",
+   "move_pct": -1.2655
+  },
+  {
+   "etf": "XLF",
+   "sector": "Financials",
+   "move_pct": -1.3239
+  },
+  {
+   "etf": "XLY",
+   "sector": "Consumer discretionary",
+   "move_pct": -1.6607
+  },
+  {
+   "etf": "XLC",
+   "sector": "Communication services",
+   "move_pct": -1.7781
+  },
+  {
+   "etf": "XLP",
+   "sector": "Consumer staples",
+   "move_pct": -1.9224
+  }
+ ],
+ "assets": [
+  {
+   "ticker": "GOOG",
+   "name": "Alphabet (Class C)",
+   "class": "stock",
+   "symbol": "GOOG",
+   "notes": [],
+   "close": 317.28,
+   "prev_date": "2026-10-22",
+   "move_pct": -1.0849,
+   "sigma": -0.6065,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLC",
+    "move_pct": -1.08,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.7,
+    "sector_pp": -1.2,
+    "specific_pp": 0.8,
+    "beta_market": 1.36,
+    "beta_sector": 0.89,
+    "r2": 0.463,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "META": {
+     "move_pct": -0.9602
+    },
+    "MSFT": {
+     "move_pct": 0.6582
+    },
+    "AMZN": {
+     "move_pct": -0.9506
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-10-28",
+     "time": "after market close",
+     "eps_estimate": 3.1081,
+     "eps_actual": 2.67
+    }
+   ]
+  },
+  {
+   "ticker": "META",
+   "name": "Meta Platforms",
+   "class": "stock",
+   "symbol": "META",
+   "notes": [],
+   "close": 642.62,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.9602,
+   "sigma": -0.3129,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLC",
+    "move_pct": -0.96,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.8,
+    "sector_pp": -2.2,
+    "specific_pp": 2.0,
+    "beta_market": 1.52,
+    "beta_sector": 1.61,
+    "r2": 0.471,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "GOOG": {
+     "move_pct": -1.0849
+    },
+    "SNAP": {
+     "move_pct": -0.1575
+    },
+    "PINS": {
+     "move_pct": -2.6603
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-10-21",
+     "time": "after market close",
+     "eps_estimate": 6.8723,
+     "eps_actual": 7.4
+    }
+   ]
+  },
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "class": "stock",
+   "symbol": "MSFT",
+   "notes": [],
+   "close": 524.51,
+   "prev_date": "2026-10-22",
+   "move_pct": 0.6582,
+   "sigma": 0.2638,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLK",
+    "move_pct": 0.66,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.5,
+    "sector_pp": 0.1,
+    "specific_pp": 1.0,
+    "beta_market": 1.01,
+    "beta_sector": 0.1,
+    "r2": 0.155,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "GOOG": {
+     "move_pct": -1.0849
+    },
+    "AMZN": {
+     "move_pct": -0.9506
+    },
+    "ORCL": {
+     "move_pct": 0.4939
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-10-28",
+     "time": "after market close",
+     "eps_estimate": 4.824,
+     "eps_actual": 4.89
+    }
+   ]
+  },
+  {
+   "ticker": "V",
+   "name": "Visa",
+   "class": "stock",
+   "symbol": "V",
+   "notes": [],
+   "close": 407.92,
+   "prev_date": "2026-10-22",
+   "move_pct": -1.5494,
+   "sigma": -1.3269,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLF",
+    "move_pct": -1.55,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.1,
+    "sector_pp": -1.1,
+    "specific_pp": -0.3,
+    "beta_market": 0.28,
+    "beta_sector": 1.1,
+    "r2": 0.409,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "MA": {
+     "move_pct": -1.5177
+    },
+    "AXP": {
+     "move_pct": -3.675
+    },
+    "PYPL": {
+     "move_pct": -0.8951
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-10-24 07:00",
+     "source": "Yahoo",
+     "headline": "I sold to Visa for $2 billion. I could be on a beach right now, but I’m risking my own money to solve the problem that held my first company back",
+     "url": "https://finnhub.io/api/news?id=6ae34ef667e139e20fe1f0720b9dfd34881bdc67fa6759db8172f8092ba6b7f4"
+    },
+    {
+     "time_utc": "2026-10-24 00:04",
+     "source": "Yahoo",
+     "headline": "Stocktwits Fintech Pulse: US Fintech Weekly Briefing And Market Drivers",
+     "url": "https://finnhub.io/api/news?id=ca4129d77915adbdc477bb2416243ea34f61b872fba22125c18f1a9197928c46"
+    },
+    {
+     "time_utc": "2026-10-23 21:12",
+     "source": "Yahoo",
+     "headline": "Weekly Wrap: Bitcoin Under Pressure As Market Volatility Intensifies",
+     "url": "https://finnhub.io/api/news?id=d0e0800402e0bff8dd39298605ed45370b313b5b1cfd15f14953c9b8a8093fa4"
+    },
+    {
+     "time_utc": "2026-10-23 18:04",
+     "source": "Yahoo",
+     "headline": "Byline Bancorp Q3 Earnings Call Highlights",
+     "url": "https://finnhub.io/api/news?id=e9e87436454a35ac3f807e4166d7bb4117a20eee695f68d3d873393f4c88c523"
+    },
+    {
+     "time_utc": "2026-10-23 17:41",
+     "source": "Yahoo",
+     "headline": "Visa Just Gained 10% in a Month to a Record High: Take Profits, or Buy More?",
+     "url": "https://finnhub.io/api/news?id=13226803f03972550cb4067846b2bebb7ee73032751ed14b3682dd54f8a0aad6"
+    },
+    {
+     "time_utc": "2026-10-23 16:41",
+     "source": "Yahoo",
+     "headline": "Has XRP Bottomed? We Asked Claude AI Where the Selling Stops",
+     "url": "https://finnhub.io/api/news?id=dd8f11c796bd0eeadb44b80913f3832e6f3002a9f1610d4e57f7d738d553a8f8"
+    },
+    {
+     "time_utc": "2026-10-23 15:23",
+     "source": "Yahoo",
+     "headline": "Citi gets nod from Beijing to set up a wholly owned securities company in China",
+     "url": "https://finnhub.io/api/news?id=6f64fcfa9fdebf0103e46ba62e45f75a0d1f09053aa4fd0a836f7299b0febcc2"
+    },
+    {
+     "time_utc": "2026-10-23 14:17",
+     "source": "Yahoo",
+     "headline": "Visa (V) Stock Could Be Near Fair Value Despite Its 105% Run",
+     "url": "https://finnhub.io/api/news?id=3b0d39e4b310a6afbd6430660467592b4e81e28b88a4dd6480d571b0ec49453b"
+    },
+    {
+     "time_utc": "2026-10-23 14:15",
+     "source": "Yahoo",
+     "headline": "American Express to cut 5% of its total workforce: What to know",
+     "url": "https://finnhub.io/api/news?id=c58405ce44142a92376fb9bd48517cb0c83e17b8af96144ae198273c45331af2"
+    },
+    {
+     "time_utc": "2026-10-23 13:58",
+     "source": "Benzinga",
+     "headline": "Truist Securities Maintains Buy on Visa, Raises Price Target to $443",
+     "url": "https://finnhub.io/api/news?id=6ddd1ce9c4ac11d3e737ebc514c2ca52dc0a58c033a61e316a3a7f2f00fcd1f2"
+    }
+   ],
+   "earnings": [
+    {
+     "date": "2026-10-27",
+     "time": "after market close",
+     "eps_estimate": 3.5055,
+     "eps_actual": 3.48
+    }
+   ]
+  },
+  {
+   "ticker": "NBIS",
+   "name": "Nebius Group",
+   "class": "stock",
+   "symbol": "NBIS",
+   "notes": [],
+   "close": 158.74,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.2701,
+   "sigma": -0.0352,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "SMH",
+    "move_pct": -0.27,
+    "interval_start": "2026-10-22",
+    "market_pp": -2.1,
+    "sector_pp": 2.7,
+    "specific_pp": -0.9,
+    "beta_market": 3.96,
+    "beta_sector": 1.41,
+    "r2": 0.32,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "CRWV": {
+     "move_pct": -2.455
+    },
+    "ORCL": {
+     "move_pct": 0.4939
+    },
+    "NVDA": {
+     "move_pct": -0.589
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-10-24 10:51",
+     "source": "SeekingAlpha",
+     "headline": "Setbacks Mounting On The AI Data Center Front",
+     "url": "https://finnhub.io/api/news?id=891776cbeeed0d6092d102a7561bf6e66a2de8552b9362f35ebfe4db1191747a"
+    },
+    {
+     "time_utc": "2026-10-23 22:02",
+     "source": "Yahoo",
+     "headline": "Anthropic IPO Watch, SpaceX’s Soaring Compute Pricing, Wall Street’s Takes on CoreWeave vs. Nebius",
+     "url": "https://finnhub.io/api/news?id=9e5fa0b23416e12aaa9c991a96dfc9a8e0da4d4ff461639b0312798d155b611e"
+    },
+    {
+     "time_utc": "2026-10-23 18:00",
+     "source": "Yahoo",
+     "headline": "These 2 Neocloud Stocks Could Rebound Over 90%, Say Analysts",
+     "url": "https://finnhub.io/api/news?id=ceb3b9111f74ef6f4aeb1c44e933014bff8abff8bb79d421040f7b23f82f238c"
+    },
+    {
+     "time_utc": "2026-10-23 16:51",
+     "source": "Yahoo",
+     "headline": "Fastly Jumps 8% as Cloud Rebound Broadens; Nebius Ticks Up, CoreWeave Slips",
+     "url": "https://finnhub.io/api/news?id=a95d3b5fe1ceaff1e62233ef8c8aa76514c9686dafd0d75204f4967954e8c67e"
+    },
+    {
+     "time_utc": "2026-10-23 16:10",
+     "source": "Yahoo",
+     "headline": "The AI Rout: Sorting CAPEX Fact From Fiction",
+     "url": "https://finnhub.io/api/news?id=aedbe56cd4c41b1233264d753fe95e65da5e49f6e72550f439a94264d9cec94f"
+    },
+    {
+     "time_utc": "2026-10-23 15:08",
+     "source": "Yahoo",
+     "headline": "How Apple dethroned Nvidia to become world's most valuable company",
+     "url": "https://finnhub.io/api/news?id=eabc5f90f77eac6f4f03f5e2f6fba873383507277d5869ce259a4c44ee87062b"
+    },
+    {
+     "time_utc": "2026-10-23 15:02",
+     "source": "Yahoo",
+     "headline": "Bloom Energy says first power block is ready at Nebius’s 300 MW New Jersey data center",
+     "url": "https://finnhub.io/api/news?id=2950daec964f8fd7523bb74fa6a9f820020b456eca6c521195327f3904d6db6c"
+    },
+    {
+     "time_utc": "2026-10-23 14:50",
+     "source": "Yahoo",
+     "headline": "Short Sellers Just Made $6 Billion Betting Against AI Data Center Stocks",
+     "url": "https://finnhub.io/api/news?id=0fb5de91b78b99ce091522b594b440aca04dd84360dac909394c8b6475b654b1"
+    },
+    {
+     "time_utc": "2026-10-23 14:01",
+     "source": "Yahoo",
+     "headline": "Apple is catching up to Nvidia's market cap, and investors are waiting on Anthropic's IPO",
+     "url": "https://finnhub.io/api/news?id=22c6cfe7d8dceeff28163eb03e53c601dd94522269f309cdc6dcf277207c3695"
+    },
+    {
+     "time_utc": "2026-10-23 14:01",
+     "source": "Yahoo",
+     "headline": "Nvidia Stock’s 2 Critical Flaws and More Reasons an Analyst Says Sell",
+     "url": "https://finnhub.io/api/news?id=e3a8dbb19a2168f7b754dae5f0fa41bf11f2a1674e6a4c573140a64b5effb719"
+    }
+   ],
+   "earnings": [
+    {
+     "date": "2026-11-12",
+     "time": "unknown",
+     "eps_estimate": -0.7021,
+     "eps_actual": null
+    }
+   ]
+  },
+  {
+   "ticker": "CRWV",
+   "name": "CoreWeave",
+   "class": "stock",
+   "symbol": "CRWV",
+   "notes": [],
+   "close": 54.235,
+   "prev_date": "2026-10-22",
+   "move_pct": -2.455,
+   "sigma": -0.3707,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "SMH",
+    "move_pct": -2.46,
+    "interval_start": "2026-10-22",
+    "market_pp": -1.9,
+    "sector_pp": 2.0,
+    "specific_pp": -2.6,
+    "beta_market": 3.66,
+    "beta_sector": 1.04,
+    "r2": 0.31,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "NBIS": {
+     "move_pct": -0.2701
+    },
+    "ORCL": {
+     "move_pct": 0.4939
+    },
+    "NVDA": {
+     "move_pct": -0.589
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-11-10",
+     "time": "after market close",
+     "eps_estimate": -1.1831,
+     "eps_actual": null
+    }
+   ]
+  },
+  {
+   "ticker": "CHA",
+   "name": "Chagee Holdings (ADS)",
+   "class": "stock",
+   "symbol": "CHA",
+   "notes": [],
+   "close": 12.36,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.8026,
+   "sigma": -0.2855,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "MCHI",
+    "move_pct": -0.8,
+    "interval_start": "2026-10-22",
+    "market_pp": null,
+    "sector_pp": null,
+    "specific_pp": null,
+    "beta_market": 0.25,
+    "beta_sector": 0.38,
+    "r2": 0.016,
+    "observations": 252,
+    "na_reason": "R^2 0.016 is below 0.1: the benchmarks explain too little to split the move",
+    "notes": []
+   },
+   "peers": {
+    "LKNCY": {
+     "move_pct": -0.1536
+    },
+    "SBUX": {
+     "move_pct": -1.0892
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-10-21 08:22",
+     "source": "Benzinga",
+     "headline": "Jefferies Upgrades Chagee Holdings to Buy, Raises Price Target to $14.9",
+     "url": "https://finnhub.io/api/news?id=f428c285b882fa228d6d08a9a16d91e1d3ea960d6368c05580ea85c4940bb809"
+    }
+   ],
+   "earnings": []
+  },
+  {
+   "ticker": "SCHD",
+   "name": "Schwab US Dividend Equity ETF",
+   "class": "etf",
+   "symbol": "SCHD",
+   "notes": [],
+   "close": 35.27,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.3672,
+   "sigma": -0.5077,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "IWD",
+    "move_pct": -0.37,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.1,
+    "sector_pp": -0.4,
+    "specific_pp": 0.2,
+    "beta_market": 0.2,
+    "beta_sector": 1.3,
+    "r2": 0.655,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "VYM": {
+     "move_pct": -0.6765
+    },
+    "DVY": {
+     "move_pct": -0.9094
+    }
+   }
+  },
+  {
+   "ticker": "VEA",
+   "name": "Vanguard FTSE Developed Markets ETF",
+   "class": "etf",
+   "symbol": "VEA",
+   "notes": [],
+   "close": 69.05,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.3032,
+   "sigma": -0.3338,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "DX-Y.NYB",
+    "move_pct": -0.3,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.6,
+    "sector_pp": -0.1,
+    "specific_pp": 0.4,
+    "beta_market": 1.12,
+    "beta_sector": -1.12,
+    "r2": 0.746,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "EFA": {
+     "move_pct": -0.5041
+    },
+    "IEFA": {
+     "move_pct": -0.4888
+    }
+   }
+  },
+  {
+   "ticker": "BUG",
+   "name": "Global X Cybersecurity ETF",
+   "class": "etf",
+   "symbol": "BUG",
+   "notes": [],
+   "close": 49.93,
+   "prev_date": "2026-10-22",
+   "move_pct": 4.9832,
+   "sigma": 1.6783,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "IGV",
+    "move_pct": 4.98,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.6,
+    "sector_pp": 2.5,
+    "specific_pp": 3.0,
+    "beta_market": 1.11,
+    "beta_sector": 1.04,
+    "r2": 0.719,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "CIBR": {
+     "move_pct": 3.2195
+    },
+    "HACK": {
+     "move_pct": 4.164
+    }
+   }
+  },
+  {
+   "ticker": "SPY",
+   "name": "SPDR S&P 500 ETF",
+   "class": "etf",
+   "symbol": "SPY",
+   "notes": [],
+   "close": 759.97,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.5223,
+   "sigma": -0.7674,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "QQQ": {
+     "move_pct": -0.0099
+    },
+    "IWM": {
+     "move_pct": -0.3325
+    }
+   }
+  },
+  {
+   "ticker": "GOLD",
+   "name": "Gold (front-month futures)",
+   "class": "commodity",
+   "symbol": "GC=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 4007.8999,
+   "prev_date": "2026-10-22",
+   "move_pct": -1.293,
+   "sigma": -0.9742,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": null,
+    "move_pct": -1.29,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.4,
+    "sector_pp": null,
+    "specific_pp": -0.9,
+    "beta_market": -2.02,
+    "beta_sector": null,
+    "r2": 0.139,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "SI=F": {
+     "move_pct": -1.9228
+    },
+    "GLD": {
+     "move_pct": -0.6477
+    }
+   }
+  },
+  {
+   "ticker": "COPPER",
+   "name": "Copper (COMEX front-month)",
+   "class": "commodity",
+   "symbol": "HG=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 6.476,
+   "prev_date": "2026-10-22",
+   "move_pct": 1.7839,
+   "sigma": 1.3459,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": "MCHI",
+    "move_pct": 1.78,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.3,
+    "sector_pp": 0.2,
+    "specific_pp": 2.0,
+    "beta_market": -1.75,
+    "beta_sector": 0.6,
+    "r2": 0.261,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "FCX": {
+     "move_pct": 0.9135
+    },
+    "COPX": {
+     "move_pct": -0.0547
+    }
+   }
+  },
+  {
+   "ticker": "OIL",
+   "name": "Brent crude (front-month)",
+   "class": "commodity",
+   "symbol": "BZ=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 116.72,
+   "prev_date": "2026-10-22",
+   "move_pct": 3.1369,
+   "sigma": 1.2412,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": null,
+    "move_pct": 3.14,
+    "interval_start": "2026-10-22",
+    "market_pp": null,
+    "sector_pp": null,
+    "specific_pp": null,
+    "beta_market": 2.26,
+    "beta_sector": null,
+    "r2": 0.046,
+    "observations": 252,
+    "na_reason": "R^2 0.046 is below 0.1: the benchmarks explain too little to split the move",
+    "notes": []
+   },
+   "peers": {
+    "CL=F": {
+     "move_pct": 3.8202
+    },
+    "NG=F": {
+     "move_pct": -5.5794
+    },
+    "XLE": {
+     "move_pct": 2.6047
+    }
+   }
+  },
+  {
+   "ticker": "US10Y",
+   "name": "US 10-year Treasury yield",
+   "class": "rate",
+   "symbol": "^TNX",
+   "notes": [],
+   "close": 4.988,
+   "prev_date": "2026-10-22",
+   "move_bp": 3.5,
+   "sigma": 0.6795,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "^FVX": {
+     "move_bp": 3.7
+    },
+    "^TYX": {
+     "move_bp": 2.8
+    },
+    "2YY=F": {
+     "move_bp": 0.0
+    }
+   }
+  },
+  {
+   "ticker": "US2Y",
+   "name": "US 2-year Treasury yield",
+   "class": "rate",
+   "symbol": "2YY=F",
+   "notes": [],
+   "close": 4.75,
+   "prev_date": "2026-10-22",
+   "move_bp": 0.0,
+   "sigma": 0.0,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "^TNX": {
+     "move_bp": 3.5
+    }
+   }
+  },
+  {
+   "ticker": "FEDFUNDS",
+   "name": "Fed funds target range (upper bound)",
+   "class": "policy",
+   "symbol": "fred:DFEDTARU",
+   "notes": [
+    "FRED data unavailable in this run."
+   ]
+  },
+  {
+   "ticker": "DXY",
+   "name": "US Dollar Index",
+   "class": "fx",
+   "symbol": "DX-Y.NYB",
+   "notes": [],
+   "close": 101.81,
+   "prev_date": "2026-10-22",
+   "move_pct": 0.1968,
+   "sigma": 0.6354,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "EURUSD=X": {
+     "move_pct": -0.1178
+    },
+    "JPY=X": {
+     "move_pct": -1.0358
+    }
+   }
+  },
+  {
+   "ticker": "USDSGD",
+   "name": "USD/SGD",
+   "class": "fx",
+   "symbol": "SGD=X",
+   "notes": [],
+   "close": 1.2767,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.029,
+   "sigma": -0.1528,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "DX-Y.NYB": {
+     "move_pct": 0.1968
+    }
+   }
+  },
+  {
+   "ticker": "BTC",
+   "name": "Bitcoin",
+   "class": "crypto",
+   "symbol": "BTC-USD",
+   "notes": [
+    "Crypto trades 24/7; the move is close-to-close on Yahoo's UTC daily bars and the latest bar may be partial."
+   ],
+   "close": 81074.1875,
+   "prev_date": "2026-10-22",
+   "move_pct": -0.2923,
+   "sigma": -0.1565,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "QQQ",
+    "sector": null,
+    "move_pct": -0.29,
+    "interval_start": "2026-10-22",
+    "market_pp": -0.0,
+    "sector_pp": null,
+    "specific_pp": -0.3,
+    "beta_market": 0.97,
+    "beta_sector": null,
+    "r2": 0.199,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "ETH-USD": {
+     "move_pct": -0.0885
+    },
+    "COIN": {
+     "move_pct": -2.7441
+    },
+    "MSTR": {
+     "move_pct": 0.144
+    }
+   }
+  }
+ ],
+ "fred": {},
+ "market_news": [],
+ "errors": [
+  "FRED DGS2: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DGS10: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFII10: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFEDTARU: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFEDTARL: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)"
+ ]
+}

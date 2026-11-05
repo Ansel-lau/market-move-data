@@ -1,0 +1,1192 @@
+{
+ "schema": 1,
+ "session_date": "2026-11-04",
+ "generated_at_utc": "2026-11-05 18:58",
+ "sources": {
+  "prices": "Yahoo Finance via yfinance (adjusted closes)",
+  "rates": "FRED, Federal Reserve Bank of St. Louis",
+  "headlines": "Finnhub"
+ },
+ "method": {
+  "move": "close on session_date vs the asset's previous close",
+  "sigma_window_days": 60,
+  "attribution": "two-factor OLS on the 252 common trading days before the session; NA if < 120 days or R^2 < 0.10",
+  "units": "move_pct in %, move_bp in basis points, components in percentage points (pp)"
+ },
+ "backdrop": [
+  {
+   "name": "S&P 500 (SPY)",
+   "symbol": "SPY",
+   "close": 766.81,
+   "move_pct": 1.6518
+  },
+  {
+   "name": "Nasdaq 100 (QQQ)",
+   "symbol": "QQQ",
+   "close": 691.95,
+   "move_pct": 0.9733
+  },
+  {
+   "name": "VIX",
+   "symbol": "^VIX",
+   "close": 16.61,
+   "move_pct": -20.2592
+  },
+  {
+   "name": "US 10Y yield",
+   "symbol": "^TNX",
+   "close": 4.894,
+   "move_bp": -5.8
+  },
+  {
+   "name": "US Dollar Index",
+   "symbol": "DX-Y.NYB",
+   "close": 101.51,
+   "move_pct": -0.3534
+  },
+  {
+   "name": "Brent",
+   "symbol": "BZ=F",
+   "close": 94.62,
+   "move_pct": -8.6679
+  },
+  {
+   "name": "WTI",
+   "symbol": "CL=F",
+   "close": 88.12,
+   "move_pct": -8.2943
+  },
+  {
+   "name": "Gold",
+   "symbol": "GC=F",
+   "close": 4073.0,
+   "move_pct": 3.3651
+  },
+  {
+   "name": "Bitcoin",
+   "symbol": "BTC-USD",
+   "close": 80405.2891,
+   "move_pct": 3.9566
+  }
+ ],
+ "sectors": [
+  {
+   "etf": "XLY",
+   "sector": "Consumer discretionary",
+   "move_pct": 4.2615
+  },
+  {
+   "etf": "XLF",
+   "sector": "Financials",
+   "move_pct": 3.5146
+  },
+  {
+   "etf": "XLC",
+   "sector": "Communication services",
+   "move_pct": 3.47
+  },
+  {
+   "etf": "XLP",
+   "sector": "Consumer staples",
+   "move_pct": 3.3614
+  },
+  {
+   "etf": "XLRE",
+   "sector": "Real estate",
+   "move_pct": 3.3204
+  },
+  {
+   "etf": "XLV",
+   "sector": "Health care",
+   "move_pct": 3.0649
+  },
+  {
+   "etf": "XLB",
+   "sector": "Materials",
+   "move_pct": 2.491
+  },
+  {
+   "etf": "XLU",
+   "sector": "Utilities",
+   "move_pct": 0.4376
+  },
+  {
+   "etf": "XLK",
+   "sector": "Technology",
+   "move_pct": -0.0057
+  },
+  {
+   "etf": "XLI",
+   "sector": "Industrials",
+   "move_pct": -1.0857
+  },
+  {
+   "etf": "XLE",
+   "sector": "Energy",
+   "move_pct": -4.7391
+  }
+ ],
+ "assets": [
+  {
+   "ticker": "GOOG",
+   "name": "Alphabet (Class C)",
+   "class": "stock",
+   "symbol": "GOOG",
+   "notes": [],
+   "close": 287.3,
+   "prev_date": "2026-11-03",
+   "move_pct": 3.245,
+   "sigma": 1.57,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLC",
+    "move_pct": 3.25,
+    "interval_start": "2026-11-03",
+    "market_pp": 2.3,
+    "sector_pp": 2.4,
+    "specific_pp": -1.4,
+    "beta_market": 1.39,
+    "beta_sector": 0.98,
+    "r2": 0.458,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "META": {
+     "move_pct": 1.4444
+    },
+    "MSFT": {
+     "move_pct": 6.6815
+    },
+    "AMZN": {
+     "move_pct": 6.1191
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-11-05 12:00",
+     "source": "Yahoo",
+     "headline": "How Quantinuum Is Taking Aim at a Quantum Computing Bottleneck",
+     "url": "https://finnhub.io/api/news?id=b49d716c6db08bd7d2e84de02e7e9466662a6a90f84f24c6871c65b82f4d0127"
+    },
+    {
+     "time_utc": "2026-11-05 11:55",
+     "source": "Yahoo",
+     "headline": "DTE Energy announces strategic sale of its non-utility DTE Vantage business; reports third quarter accomplishments including advancing data center growth that delivers unprecedented customer affordability benefits and filing long-term generation plan",
+     "url": "https://finnhub.io/api/news?id=b20d342543ddd9fdbaabc50b1b93ec03e668b85f5358b1dbe9fd946a7c5d8d5b"
+    },
+    {
+     "time_utc": "2026-11-05 11:47",
+     "source": "Yahoo",
+     "headline": "Massive market rotation raises question: Is the sell-AI trade here to stay?",
+     "url": "https://finnhub.io/api/news?id=3ce2470bd15956d59ed8b005dece062785272576d526810ee4396f6181fd8a61"
+    },
+    {
+     "time_utc": "2026-11-05 11:45",
+     "source": "Yahoo",
+     "headline": "Eos Energy Enterprises Reports Third Quarter 2026 Revenue of $82.7 Million, Up 171% Year Over Year, with Gross Margin Improving 58 Percentage Points",
+     "url": "https://finnhub.io/api/news?id=16242f9e4eca03f9b5eefbf8e101573b42c8e501844b2f2a1714c51c044b9214"
+    },
+    {
+     "time_utc": "2026-11-05 11:34",
+     "source": "Yahoo",
+     "headline": "Dow Jones Futures Rise As Techs Fall; Apple, Microsoft, Amazon Flash Buy Signals",
+     "url": "https://finnhub.io/api/news?id=22d3420505da267288919568aa0918efb5652b523890bdbdbe088df0977a206f"
+    },
+    {
+     "time_utc": "2026-11-05 11:28",
+     "source": "SeekingAlpha",
+     "headline": "Alphabet: The Advertising Phenomenon Investors Always Miss",
+     "url": "https://finnhub.io/api/news?id=57d9fdf8673243fdc344c501a583f965c7f62e96c7cb490cc504ed74616690ba"
+    },
+    {
+     "time_utc": "2026-11-05 11:09",
+     "source": "SeekingAlpha",
+     "headline": "Hopium Around Gridlock Takes Hold",
+     "url": "https://finnhub.io/api/news?id=ff6ce94670688e04bae15efbcbced3a75c0fda1ed0ebfb83b1b229a88c676044"
+    },
+    {
+     "time_utc": "2026-11-05 11:05",
+     "source": "Yahoo",
+     "headline": "ProShares Ultra S&P500 2x Shares (SSO) Buys $2.7 Million More OKTA on Nov. 3",
+     "url": "https://finnhub.io/api/news?id=3ad50a6ad9432c131445032dbab824e9675e28713eb7ec9a0715e48eafb4ceaf"
+    },
+    {
+     "time_utc": "2026-11-05 11:04",
+     "source": "Yahoo",
+     "headline": "State Street Comm Services SPDR (XLC) Sells $102.6 Million of Meta on Nov. 3",
+     "url": "https://finnhub.io/api/news?id=802d55935bb4fa0f05412f85d9c22a26df320c462783dc7b92bba7d1dd0e3775"
+    },
+    {
+     "time_utc": "2026-11-05 11:03",
+     "source": "Yahoo",
+     "headline": "Goldman Sachs S&P 500 Premium Income (GPIX) Adds Meta and Alphabet on Nov. 3",
+     "url": "https://finnhub.io/api/news?id=614a976cbabcdcb52cf442815c7fe01f207d3e2ad153850278237668414f643a"
+    }
+   ],
+   "earnings": []
+  },
+  {
+   "ticker": "META",
+   "name": "Meta Platforms",
+   "class": "stock",
+   "symbol": "META",
+   "notes": [],
+   "close": 630.0,
+   "prev_date": "2026-11-03",
+   "move_pct": 1.4444,
+   "sigma": 0.5122,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLC",
+    "move_pct": 1.44,
+    "interval_start": "2026-11-03",
+    "market_pp": 2.4,
+    "sector_pp": 3.7,
+    "specific_pp": -4.6,
+    "beta_market": 1.43,
+    "beta_sector": 1.53,
+    "r2": 0.463,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "GOOG": {
+     "move_pct": 3.245
+    },
+    "SNAP": {
+     "move_pct": 5.9034
+    },
+    "PINS": {
+     "move_pct": 4.224
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-11-05 11:50",
+     "source": "SeekingAlpha",
+     "headline": "Bristol Gate U.S. Equity Q3 2026 Portfolio Review",
+     "url": "https://finnhub.io/api/news?id=baf813953ae9bc75e86b422cebf6a924d5b12b64d0185fee6e688a2fe9c218f6"
+    },
+    {
+     "time_utc": "2026-11-05 11:48",
+     "source": "Yahoo",
+     "headline": "SpaceX Stock Today Has These 2  Positives. The Stock Is Still Falling.",
+     "url": "https://finnhub.io/api/news?id=1101e3e2e76172d7dc08ec130b56b8036506af5ad0117e3de29c4128ca8212bf"
+    },
+    {
+     "time_utc": "2026-11-05 11:47",
+     "source": "Yahoo",
+     "headline": "Massive market rotation raises question: Is the sell-AI trade here to stay?",
+     "url": "https://finnhub.io/api/news?id=3ce2470bd15956d59ed8b005dece062785272576d526810ee4396f6181fd8a61"
+    },
+    {
+     "time_utc": "2026-11-05 11:34",
+     "source": "Yahoo",
+     "headline": "Dow Jones Futures Rise As Techs Fall; Apple, Microsoft, Amazon Flash Buy Signals",
+     "url": "https://finnhub.io/api/news?id=22d3420505da267288919568aa0918efb5652b523890bdbdbe088df0977a206f"
+    },
+    {
+     "time_utc": "2026-11-05 11:26",
+     "source": "Yahoo",
+     "headline": "The Wait Is Over: 2 Historic Artificial Intelligence (AI) Stock Splits Were Just Announced",
+     "url": "https://finnhub.io/api/news?id=c1a7cab955a9af215d252447118bb98d8c13a164267ff1fd869f9fc279413cf9"
+    },
+    {
+     "time_utc": "2026-11-05 11:09",
+     "source": "SeekingAlpha",
+     "headline": "Hopium Around Gridlock Takes Hold",
+     "url": "https://finnhub.io/api/news?id=ff6ce94670688e04bae15efbcbced3a75c0fda1ed0ebfb83b1b229a88c676044"
+    },
+    {
+     "time_utc": "2026-11-05 11:04",
+     "source": "Yahoo",
+     "headline": "State Street Comm Services SPDR (XLC) Sells $102.6 Million of Meta on Nov. 3",
+     "url": "https://finnhub.io/api/news?id=802d55935bb4fa0f05412f85d9c22a26df320c462783dc7b92bba7d1dd0e3775"
+    },
+    {
+     "time_utc": "2026-11-05 11:03",
+     "source": "Yahoo",
+     "headline": "Goldman Sachs S&P 500 Premium Income (GPIX) Adds Meta and Alphabet on Nov. 3",
+     "url": "https://finnhub.io/api/news?id=614a976cbabcdcb52cf442815c7fe01f207d3e2ad153850278237668414f643a"
+    },
+    {
+     "time_utc": "2026-11-05 10:36",
+     "source": "Yahoo",
+     "headline": "Why Is Everyone Ignoring Pinterest Stock's High Cash Yield?",
+     "url": "https://finnhub.io/api/news?id=f8fcab236a49f940b02d1e03bba8de3820050670201d375a70190613b5c86635"
+    },
+    {
+     "time_utc": "2026-11-05 09:45",
+     "source": "Benzinga",
+     "headline": "Five Signals That Preceded Past Recessions Are Back — and AI Is at the Center",
+     "url": "https://finnhub.io/api/news?id=08ceb3d12e35c6492a291c48047101ae9618d18d196486c8eca3ab3351a1d06a"
+    }
+   ],
+   "earnings": []
+  },
+  {
+   "ticker": "MSFT",
+   "name": "Microsoft",
+   "class": "stock",
+   "symbol": "MSFT",
+   "notes": [],
+   "close": 555.8,
+   "prev_date": "2026-11-03",
+   "move_pct": 6.6815,
+   "sigma": 4.6944,
+   "above_2_sigma": true,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLK",
+    "move_pct": 6.68,
+    "interval_start": "2026-11-03",
+    "market_pp": 1.7,
+    "sector_pp": -0.4,
+    "specific_pp": 5.4,
+    "beta_market": 1.01,
+    "beta_sector": 0.14,
+    "r2": 0.156,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "GOOG": {
+     "move_pct": 3.245
+    },
+    "AMZN": {
+     "move_pct": 6.1191
+    },
+    "ORCL": {
+     "move_pct": -1.9494
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-11-05 11:53",
+     "source": "Yahoo",
+     "headline": "Microsoft walks away from AI deal as $170 billion question grows",
+     "url": "https://finnhub.io/api/news?id=599f82e2c2f637b451a7b59ac4e6b9a474c525aeaccb94d45b568becf4573eee"
+    },
+    {
+     "time_utc": "2026-11-05 11:50",
+     "source": "SeekingAlpha",
+     "headline": "Bristol Gate U.S. Equity Q3 2026 Portfolio Review",
+     "url": "https://finnhub.io/api/news?id=baf813953ae9bc75e86b422cebf6a924d5b12b64d0185fee6e688a2fe9c218f6"
+    },
+    {
+     "time_utc": "2026-11-05 11:47",
+     "source": "Yahoo",
+     "headline": "Massive market rotation raises question: Is the sell-AI trade here to stay?",
+     "url": "https://finnhub.io/api/news?id=3ce2470bd15956d59ed8b005dece062785272576d526810ee4396f6181fd8a61"
+    },
+    {
+     "time_utc": "2026-11-05 11:34",
+     "source": "Yahoo",
+     "headline": "Dow Jones Futures Rise As Techs Fall; Apple, Microsoft, Amazon Flash Buy Signals",
+     "url": "https://finnhub.io/api/news?id=22d3420505da267288919568aa0918efb5652b523890bdbdbe088df0977a206f"
+    },
+    {
+     "time_utc": "2026-11-05 11:27",
+     "source": "Yahoo",
+     "headline": "Microsoft Opts Against Expanding Nscale Texas Data Centre Agreement Ahead of Planned $35 Billion IPO",
+     "url": "https://finnhub.io/api/news?id=58af3bfc8ea02fdd8f9fa4ada5ef143644570c6120de5534c55dd0c472e7de61"
+    },
+    {
+     "time_utc": "2026-11-05 11:09",
+     "source": "SeekingAlpha",
+     "headline": "Hopium Around Gridlock Takes Hold",
+     "url": "https://finnhub.io/api/news?id=ff6ce94670688e04bae15efbcbced3a75c0fda1ed0ebfb83b1b229a88c676044"
+    },
+    {
+     "time_utc": "2026-11-05 11:07",
+     "source": "SeekingAlpha",
+     "headline": "BEDY: This High-Yielding ETF Is Well Positioned Following The Midterms",
+     "url": "https://finnhub.io/api/news?id=169f2632bc7315a6282081143a0413558a226751f42ae4aa6ce4c1d9c60ede1c"
+    },
+    {
+     "time_utc": "2026-11-05 11:05",
+     "source": "Yahoo",
+     "headline": "Invesco QQQ (QQQ) Buys $19.6 Million More NVIDIA on Tuesday",
+     "url": "https://finnhub.io/api/news?id=a2dc83c6996fac7ac254210cfa2df0fd2ff247c2395c87cdc76b6f652213837a"
+    },
+    {
+     "time_utc": "2026-11-05 11:05",
+     "source": "Yahoo",
+     "headline": "ProShares Ultra S&P500 2x Shares (SSO) Buys $2.7 Million More OKTA on Nov. 3",
+     "url": "https://finnhub.io/api/news?id=3ad50a6ad9432c131445032dbab824e9675e28713eb7ec9a0715e48eafb4ceaf"
+    },
+    {
+     "time_utc": "2026-11-05 11:05",
+     "source": "Yahoo",
+     "headline": "Invesco NASDAQ 100 ETF (QQQM) Adds NVIDIA and Apple on Tuesday",
+     "url": "https://finnhub.io/api/news?id=ed9f671ee3cbe81381108e1a8119b0ba0ecffa2966a0d4390c3585a70f164b5a"
+    }
+   ],
+   "earnings": []
+  },
+  {
+   "ticker": "V",
+   "name": "Visa",
+   "class": "stock",
+   "symbol": "V",
+   "notes": [],
+   "close": 436.57,
+   "prev_date": "2026-11-03",
+   "move_pct": 3.8414,
+   "sigma": 3.0727,
+   "above_2_sigma": true,
+   "attribution": {
+    "market": "SPY",
+    "sector": "XLF",
+    "move_pct": 3.84,
+    "interval_start": "2026-11-03",
+    "market_pp": 0.4,
+    "sector_pp": 2.9,
+    "specific_pp": 0.5,
+    "beta_market": 0.26,
+    "beta_sector": 1.13,
+    "r2": 0.424,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "MA": {
+     "move_pct": 3.9402
+    },
+    "AXP": {
+     "move_pct": 2.1782
+    },
+    "PYPL": {
+     "move_pct": 3.4187
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-11-05 12:00",
+     "source": "Yahoo",
+     "headline": "Visa Forecasts U.S. Holiday Spending to Rise 4.5% as Consumers Keep the Holidays a Priority",
+     "url": "https://finnhub.io/api/news?id=c3aebd73b6911fd27f31edf2c12236dc990bd3868d8071e1bb3771b6c032af1d"
+    },
+    {
+     "time_utc": "2026-11-05 11:05",
+     "source": "Yahoo",
+     "headline": "Spdr Dow Jones Industrial Average ETF (DIA) Sells Goldman Sachs, Caterpillar on Nov. 3",
+     "url": "https://finnhub.io/api/news?id=babcf2869acd3ef4097128694bc882d35aa29fa034f1ed69a9d34f459128611d"
+    },
+    {
+     "time_utc": "2026-11-05 06:00",
+     "source": "CNBC",
+     "headline": "Consumers are spending on physical gifts even as travel tops wish lists, Visa survey finds",
+     "url": "https://finnhub.io/api/news?id=8c5f2aea6ee7dedd8c1d915a409b6545f932024e9776d001c5f0478f2522f2e0"
+    },
+    {
+     "time_utc": "2026-11-05 04:14",
+     "source": "Yahoo",
+     "headline": "What Sezzle (SEZL) Said on Its Q3 Earnings Call",
+     "url": "https://finnhub.io/api/news?id=4a5aec2744ce35d61cf8d6b18af9b3f8ded8d13c2690dab4840d334c31776905"
+    },
+    {
+     "time_utc": "2026-11-05 03:21",
+     "source": "Yahoo",
+     "headline": "Mastercard Soars 10% in a Week to a Record. Its CFO’s Warning: “A Similar Offset in Q4”",
+     "url": "https://finnhub.io/api/news?id=12e30d4cda9a747e80bb0edcb3a0bce50013058092778cf1ded350926ba70354"
+    },
+    {
+     "time_utc": "2026-11-05 02:22",
+     "source": "Yahoo",
+     "headline": "Grayscale and BlackRock Say Democratic Midterm Sweep Won’t Slow Crypto Growth",
+     "url": "https://finnhub.io/api/news?id=ed219f1be9da988a51bd6882ed2ea37ba78c7147c74ecbdc38d425f7cda6eee8"
+    },
+    {
+     "time_utc": "2026-11-05 01:59",
+     "source": "Yahoo",
+     "headline": "Visa Establishes Global Capability Hubs in Singapore to Build the Future of Global Commerce",
+     "url": "https://finnhub.io/api/news?id=f7ee7f1bb72e859194341a81808fc4167896c8fc34647516a00eb20e0fb81621"
+    },
+    {
+     "time_utc": "2026-11-04 21:06",
+     "source": "Yahoo",
+     "headline": "BLS International Services Ltd (BOM:540073) (Q2 2027) Earnings Call Highlights: Record Revenue ...",
+     "url": "https://finnhub.io/api/news?id=86652cbde191364e7be62c58d2aaec5587b8abff4dc54885802873202708e36f"
+    },
+    {
+     "time_utc": "2026-11-04 17:56",
+     "source": "Yahoo",
+     "headline": "Why Bill Ackman Says He Feels Like “Markets Are Broken” Casinos",
+     "url": "https://finnhub.io/api/news?id=2a0548c4488fc79f3297ff36ed9adf19d3d768be1136bb71ac40176a91c0277e"
+    },
+    {
+     "time_utc": "2026-11-04 17:16",
+     "source": "Yahoo",
+     "headline": "FIS Q3 Earnings Meet Estimates, Revenues Beat on Banking Strength",
+     "url": "https://finnhub.io/api/news?id=8c6f58067e0471d3c57eea6d23590db8b509388192f249cae7980a34dddb0010"
+    }
+   ],
+   "earnings": []
+  },
+  {
+   "ticker": "NBIS",
+   "name": "Nebius Group",
+   "class": "stock",
+   "symbol": "NBIS",
+   "notes": [],
+   "close": 141.52,
+   "prev_date": "2026-11-03",
+   "move_pct": -6.6737,
+   "sigma": -0.9649,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "SMH",
+    "move_pct": -6.67,
+    "interval_start": "2026-11-03",
+    "market_pp": 6.6,
+    "sector_pp": -9.9,
+    "specific_pp": -3.3,
+    "beta_market": 3.99,
+    "beta_sector": 1.44,
+    "r2": 0.327,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "CRWV": {
+     "move_pct": -9.8995
+    },
+    "ORCL": {
+     "move_pct": -1.9494
+    },
+    "NVDA": {
+     "move_pct": -3.1738
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-11-05 10:39",
+     "source": "Yahoo",
+     "headline": "Could Nebius Actually Climb 87%? Or Is Citi Totally Wrong?",
+     "url": "https://finnhub.io/api/news?id=2b0933756578e5654a319313f51dc9256acdad2c66142f6a1178c58d45b59cee"
+    },
+    {
+     "time_utc": "2026-11-05 09:53",
+     "source": "Benzinga",
+     "headline": "Top 5 AI Stocks to Buy After Midterm Elections: This Strategist Calls the Sell-Off a Massive Opportunity",
+     "url": "https://finnhub.io/api/news?id=980b681f37e840de664c650f94ffc5d7a62dcdf78c213d120409b5f7353af9a7"
+    },
+    {
+     "time_utc": "2026-11-05 09:30",
+     "source": "Yahoo",
+     "headline": "Boeing, ServiceNow and Nebius Keep Their Stock Off ICE-OKX Token Venue, Lifting Objectors to 62",
+     "url": "https://finnhub.io/api/news?id=e9b46c406e99f6a51d37d8baf5944b1c8a163569f0384808a1897e2454cd72fe"
+    },
+    {
+     "time_utc": "2026-11-05 09:07",
+     "source": "Benzinga",
+     "headline": "What Is Going On With Nvidia Stock on Thursday?",
+     "url": "https://finnhub.io/api/news?id=e76542cde7600eb7d2770432fc28daeb7a969239991dfc4d2d2f51bb3d415237"
+    },
+    {
+     "time_utc": "2026-11-05 09:01",
+     "source": "Yahoo",
+     "headline": "Nebius Stock: The Bull Case, the Bear Case, and My Call Before Nov. 12",
+     "url": "https://finnhub.io/api/news?id=fd4e2ea7863e3bad09e3b44c6ad93d0e65fcaf187ac3d7f5e041608240cf5c5d"
+    },
+    {
+     "time_utc": "2026-11-05 08:26",
+     "source": "Yahoo",
+     "headline": "Texas election rattles AI data centers: Is this cloud giant less exposed?",
+     "url": "https://finnhub.io/api/news?id=24c737007df1450fe5600c1d0d702693dd877d4fab5d7b5dc8e63eb0cc194201"
+    },
+    {
+     "time_utc": "2026-11-05 08:08",
+     "source": "SeekingAlpha",
+     "headline": "Nebius: 53% Down, 20% Short, And Ready To Explode",
+     "url": "https://finnhub.io/api/news?id=470f9bf4941a1b4f02c0aa586fb795318e8a65b3a0d2725314d2bcefbf92650e"
+    },
+    {
+     "time_utc": "2026-11-05 06:30",
+     "source": "Benzinga",
+     "headline": "Microsoft’s $5 Billion AI Spending Shortfall Puts IREN, Nebius Under Spotlight as Satellite Imagery Shows Data Center Delays: Report",
+     "url": "https://finnhub.io/api/news?id=9fb93113ab2eeb60fd982e8e674898e9f7ba3d55626a64709249b78f26954474"
+    },
+    {
+     "time_utc": "2026-11-05 01:03",
+     "source": "Yahoo",
+     "headline": "Is the Market Bottoming? 3 Tells to Watch",
+     "url": "https://finnhub.io/api/news?id=cb87ae94ca9569c7bc592ae8bd8ea588b1636e2df14c57c99d7ecdab2653e523"
+    },
+    {
+     "time_utc": "2026-11-04 23:45",
+     "source": "Yahoo",
+     "headline": "Red Violet, Inc. (RDVT) Tops Q3 Earnings and Revenue Estimates",
+     "url": "https://finnhub.io/api/news?id=eda55e9ad90e98a3f5172114985428dd6514ca94f823e0375fb29224e3bed49c"
+    }
+   ],
+   "earnings": [
+    {
+     "date": "2026-11-12",
+     "time": "unknown",
+     "eps_estimate": -0.7021,
+     "eps_actual": null
+    }
+   ]
+  },
+  {
+   "ticker": "CRWV",
+   "name": "CoreWeave",
+   "class": "stock",
+   "symbol": "CRWV",
+   "notes": [],
+   "close": 48.42,
+   "prev_date": "2026-11-03",
+   "move_pct": -9.8995,
+   "sigma": -1.7212,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "SMH",
+    "move_pct": -9.9,
+    "interval_start": "2026-11-03",
+    "market_pp": 6.2,
+    "sector_pp": -7.5,
+    "specific_pp": -8.6,
+    "beta_market": 3.73,
+    "beta_sector": 1.08,
+    "r2": 0.32,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "NBIS": {
+     "move_pct": -6.6737
+    },
+    "ORCL": {
+     "move_pct": -1.9494
+    },
+    "NVDA": {
+     "move_pct": -3.1738
+    }
+   },
+   "headlines": [
+    {
+     "time_utc": "2026-11-05 11:53",
+     "source": "Yahoo",
+     "headline": "Dow Jones Futures Rise As Techs Fall; Apple, Microsoft, Amazon Flash Buy Signals",
+     "url": "https://finnhub.io/api/news?id=22d3420505da267288919568aa0918efb5652b523890bdbdbe088df0977a206f"
+    },
+    {
+     "time_utc": "2026-11-05 11:09",
+     "source": "SeekingAlpha",
+     "headline": "Hopium Around Gridlock Takes Hold",
+     "url": "https://finnhub.io/api/news?id=ff6ce94670688e04bae15efbcbced3a75c0fda1ed0ebfb83b1b229a88c676044"
+    },
+    {
+     "time_utc": "2026-11-05 10:36",
+     "source": "Yahoo",
+     "headline": "What Is Driving The Fall In CoreWeave Stock?",
+     "url": "https://finnhub.io/api/news?id=e78e1d15f8661f8c8cf2761cc2fc807b397bbb54a520ad00b90b58bcc4844cbe"
+    },
+    {
+     "time_utc": "2026-11-05 09:07",
+     "source": "Benzinga",
+     "headline": "What Is Going On With Nvidia Stock on Thursday?",
+     "url": "https://finnhub.io/api/news?id=e76542cde7600eb7d2770432fc28daeb7a969239991dfc4d2d2f51bb3d415237"
+    },
+    {
+     "time_utc": "2026-11-05 08:26",
+     "source": "Yahoo",
+     "headline": "Texas election rattles AI data centers: Is this cloud giant less exposed?",
+     "url": "https://finnhub.io/api/news?id=24c737007df1450fe5600c1d0d702693dd877d4fab5d7b5dc8e63eb0cc194201"
+    },
+    {
+     "time_utc": "2026-11-05 08:20",
+     "source": "Yahoo",
+     "headline": "CoreWeave (CRWV) Stock May Be Undervalued Following Data Center Fears",
+     "url": "https://finnhub.io/api/news?id=96687ec359d8eb9e11f3f313a9d3a77c8fc5300020055b972bc141d97ce180a5"
+    },
+    {
+     "time_utc": "2026-11-05 06:25",
+     "source": "Yahoo",
+     "headline": "Microsoft declines Nscale Texas expansion ahead of $35 bln IPO - report",
+     "url": "https://finnhub.io/api/news?id=bbe2a1e53ae33d76f29090c9df101ef20f8fab47e6cf57ae43bd291049b8af1c"
+    },
+    {
+     "time_utc": "2026-11-05 05:07",
+     "source": "Benzinga",
+     "headline": "Jim Cramer Warns Friday's Jobs Report Could 'Repeal' Midterm Rally, Says Elections 'Did Not Upend' Business Cycle: ‘I Hesitate To Guess Where We Go Next’",
+     "url": "https://finnhub.io/api/news?id=ca2f34140c380333ed82e0e926d213578b79c75eda309738855c75bcb3beb5cf"
+    },
+    {
+     "time_utc": "2026-11-05 03:52",
+     "source": "Yahoo",
+     "headline": "Dow Jones Futures Rise, Techs Fall; Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally",
+     "url": "https://finnhub.io/api/news?id=2e030c1da30d95ea5d20a342e1db685e178e99be4e528f3dd64712c63336f195"
+    },
+    {
+     "time_utc": "2026-11-05 02:36",
+     "source": "Yahoo",
+     "headline": "Oracle Just Dropped 14% in a Week. Is It Time to Sell, or Load Up?",
+     "url": "https://finnhub.io/api/news?id=fac32bcc7173ab1028f33776085873324891323faed01c6dacfbf7d40e33fe51"
+    }
+   ],
+   "earnings": [
+    {
+     "date": "2026-11-10",
+     "time": "after market close",
+     "eps_estimate": -1.1831,
+     "eps_actual": null
+    }
+   ]
+  },
+  {
+   "ticker": "CHA",
+   "name": "Chagee Holdings (ADS)",
+   "class": "stock",
+   "symbol": "CHA",
+   "notes": [],
+   "close": 12.77,
+   "prev_date": "2026-11-03",
+   "move_pct": 1.3492,
+   "sigma": 0.4841,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "MCHI",
+    "move_pct": 1.35,
+    "interval_start": "2026-11-03",
+    "market_pp": null,
+    "sector_pp": null,
+    "specific_pp": null,
+    "beta_market": 0.19,
+    "beta_sector": 0.41,
+    "r2": 0.017,
+    "observations": 252,
+    "na_reason": "R^2 0.017 is below 0.1: the benchmarks explain too little to split the move",
+    "notes": []
+   },
+   "peers": {
+    "LKNCY": {
+     "move_pct": 4.7112
+    },
+    "SBUX": {
+     "move_pct": 4.7055
+    }
+   },
+   "headlines": [],
+   "earnings": [
+    {
+     "date": "2026-11-26",
+     "time": "unknown",
+     "eps_estimate": 2.5336,
+     "eps_actual": null
+    }
+   ]
+  },
+  {
+   "ticker": "SCHD",
+   "name": "Schwab US Dividend Equity ETF",
+   "class": "etf",
+   "symbol": "SCHD",
+   "notes": [],
+   "close": 36.21,
+   "prev_date": "2026-11-03",
+   "move_pct": 1.8565,
+   "sigma": 2.5617,
+   "above_2_sigma": true,
+   "attribution": {
+    "market": "SPY",
+    "sector": "IWD",
+    "move_pct": 1.86,
+    "interval_start": "2026-11-03",
+    "market_pp": 0.3,
+    "sector_pp": 1.9,
+    "specific_pp": -0.3,
+    "beta_market": 0.18,
+    "beta_sector": 1.32,
+    "r2": 0.662,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "VYM": {
+     "move_pct": 1.2127
+    },
+    "DVY": {
+     "move_pct": 1.3601
+    }
+   }
+  },
+  {
+   "ticker": "VEA",
+   "name": "Vanguard FTSE Developed Markets ETF",
+   "class": "etf",
+   "symbol": "VEA",
+   "notes": [],
+   "close": 70.82,
+   "prev_date": "2026-11-03",
+   "move_pct": 2.0902,
+   "sigma": 2.6273,
+   "above_2_sigma": true,
+   "attribution": {
+    "market": "SPY",
+    "sector": "DX-Y.NYB",
+    "move_pct": 2.09,
+    "interval_start": "2026-11-03",
+    "market_pp": 1.8,
+    "sector_pp": 0.2,
+    "specific_pp": 0.1,
+    "beta_market": 1.12,
+    "beta_sector": -1.12,
+    "r2": 0.749,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "EFA": {
+     "move_pct": 2.5611
+    },
+    "IEFA": {
+     "move_pct": 2.4873
+    }
+   }
+  },
+  {
+   "ticker": "BUG",
+   "name": "Global X Cybersecurity ETF",
+   "class": "etf",
+   "symbol": "BUG",
+   "notes": [],
+   "close": 46.98,
+   "prev_date": "2026-11-03",
+   "move_pct": 0.3203,
+   "sigma": 0.1032,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "SPY",
+    "sector": "IGV",
+    "move_pct": 0.32,
+    "interval_start": "2026-11-03",
+    "market_pp": 1.9,
+    "sector_pp": -1.2,
+    "specific_pp": -0.4,
+    "beta_market": 1.15,
+    "beta_sector": 1.04,
+    "r2": 0.72,
+    "observations": 252,
+    "na_reason": null,
+    "notes": []
+   },
+   "peers": {
+    "CIBR": {
+     "move_pct": 0.144
+    },
+    "HACK": {
+     "move_pct": -0.1669
+    }
+   }
+  },
+  {
+   "ticker": "SPY",
+   "name": "SPDR S&P 500 ETF",
+   "class": "etf",
+   "symbol": "SPY",
+   "notes": [],
+   "close": 766.81,
+   "prev_date": "2026-11-03",
+   "move_pct": 1.6518,
+   "sigma": 2.6204,
+   "above_2_sigma": true,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "QQQ": {
+     "move_pct": 0.9733
+    },
+    "IWM": {
+     "move_pct": 1.5118
+    }
+   }
+  },
+  {
+   "ticker": "GOLD",
+   "name": "Gold (front-month futures)",
+   "class": "commodity",
+   "symbol": "GC=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 4073.0,
+   "prev_date": "2026-11-03",
+   "move_pct": 3.3651,
+   "sigma": 2.6375,
+   "above_2_sigma": true,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": null,
+    "move_pct": 3.37,
+    "interval_start": "2026-11-03",
+    "market_pp": 0.7,
+    "sector_pp": null,
+    "specific_pp": 2.6,
+    "beta_market": -2.05,
+    "beta_sector": null,
+    "r2": 0.141,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "SI=F": {
+     "move_pct": 5.1082
+    },
+    "GLD": {
+     "move_pct": 3.6826
+    }
+   }
+  },
+  {
+   "ticker": "COPPER",
+   "name": "Copper (COMEX front-month)",
+   "class": "commodity",
+   "symbol": "HG=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 6.403,
+   "prev_date": "2026-11-03",
+   "move_pct": 0.3841,
+   "sigma": 0.2863,
+   "above_2_sigma": false,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": "MCHI",
+    "move_pct": 0.38,
+    "interval_start": "2026-11-03",
+    "market_pp": 0.6,
+    "sector_pp": 2.4,
+    "specific_pp": -2.6,
+    "beta_market": -1.72,
+    "beta_sector": 0.6,
+    "r2": 0.248,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "FCX": {
+     "move_pct": 1.3437
+    },
+    "COPX": {
+     "move_pct": 3.9743
+    }
+   }
+  },
+  {
+   "ticker": "OIL",
+   "name": "Brent crude (front-month)",
+   "class": "commodity",
+   "symbol": "BZ=F",
+   "notes": [
+    "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
+   ],
+   "close": 94.62,
+   "prev_date": "2026-11-03",
+   "move_pct": -8.6679,
+   "sigma": -3.3345,
+   "above_2_sigma": true,
+   "attribution": {
+    "market": "DX-Y.NYB",
+    "sector": null,
+    "move_pct": -8.67,
+    "interval_start": "2026-11-03",
+    "market_pp": null,
+    "sector_pp": null,
+    "specific_pp": null,
+    "beta_market": 2.29,
+    "beta_sector": null,
+    "r2": 0.044,
+    "observations": 252,
+    "na_reason": "R^2 0.044 is below 0.1: the benchmarks explain too little to split the move",
+    "notes": []
+   },
+   "peers": {
+    "CL=F": {
+     "move_pct": -8.2943
+    },
+    "NG=F": {
+     "move_pct": 2.2107
+    },
+    "XLE": {
+     "move_pct": -4.7391
+    }
+   }
+  },
+  {
+   "ticker": "US10Y",
+   "name": "US 10-year Treasury yield",
+   "class": "rate",
+   "symbol": "^TNX",
+   "notes": [],
+   "close": 4.894,
+   "prev_date": "2026-11-03",
+   "move_bp": -5.8,
+   "sigma": -1.1402,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "^FVX": {
+     "move_bp": -5.4
+    },
+    "^TYX": {
+     "move_bp": -4.2
+    },
+    "2YY=F": {
+     "move_bp": 0.0
+    }
+   }
+  },
+  {
+   "ticker": "US2Y",
+   "name": "US 2-year Treasury yield",
+   "class": "rate",
+   "symbol": "2YY=F",
+   "notes": [],
+   "close": 4.775,
+   "prev_date": "2026-11-03",
+   "move_bp": 0.0,
+   "sigma": 0.0,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "^TNX": {
+     "move_bp": -5.8
+    }
+   }
+  },
+  {
+   "ticker": "FEDFUNDS",
+   "name": "Fed funds target range (upper bound)",
+   "class": "policy",
+   "symbol": "fred:DFEDTARU",
+   "notes": [
+    "FRED data unavailable in this run."
+   ]
+  },
+  {
+   "ticker": "DXY",
+   "name": "US Dollar Index",
+   "class": "fx",
+   "symbol": "DX-Y.NYB",
+   "notes": [],
+   "close": 101.51,
+   "prev_date": "2026-11-03",
+   "move_pct": -0.3534,
+   "sigma": -1.2275,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "EURUSD=X": {
+     "move_pct": 0.1356
+    },
+    "JPY=X": {
+     "move_pct": 0.3508
+    }
+   }
+  },
+  {
+   "ticker": "USDSGD",
+   "name": "USD/SGD",
+   "class": "fx",
+   "symbol": "SGD=X",
+   "notes": [],
+   "close": 1.2804,
+   "prev_date": "2026-11-03",
+   "move_pct": 0.1016,
+   "sigma": 0.5909,
+   "above_2_sigma": false,
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
+   "peers": {
+    "DX-Y.NYB": {
+     "move_pct": -0.3534
+    }
+   }
+  },
+  {
+   "ticker": "BTC",
+   "name": "Bitcoin",
+   "class": "crypto",
+   "symbol": "BTC-USD",
+   "notes": [
+    "Crypto trades 24/7; the move is close-to-close on Yahoo's UTC daily bars and the latest bar may be partial."
+   ],
+   "close": 80405.2891,
+   "prev_date": "2026-11-03",
+   "move_pct": 3.9566,
+   "sigma": 2.2371,
+   "above_2_sigma": true,
+   "attribution": {
+    "market": "QQQ",
+    "sector": null,
+    "move_pct": 3.96,
+    "interval_start": "2026-11-03",
+    "market_pp": 0.9,
+    "sector_pp": null,
+    "specific_pp": 3.0,
+    "beta_market": 0.94,
+    "beta_sector": null,
+    "r2": 0.194,
+    "observations": 252,
+    "na_reason": null,
+    "notes": [
+     "R^2 below 0.25: treat the split as rough"
+    ]
+   },
+   "peers": {
+    "ETH-USD": {
+     "move_pct": 6.5818
+    },
+    "COIN": {
+     "move_pct": 4.1595
+    },
+    "MSTR": {
+     "move_pct": 5.0947
+    }
+   }
+  }
+ ],
+ "fred": {},
+ "market_news": [],
+ "errors": [
+  "FRED DGS2: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DGS10: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFII10: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFEDTARU: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)",
+  "FRED DFEDTARL: HTTPSConnectionPool(host='fred.stlouisfed.org', port=443): Read timed out. (read timeout=30)"
+ ]
+}
