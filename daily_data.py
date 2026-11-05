@@ -13,7 +13,7 @@ reason), peer moves and, for stocks, recent headlines and earnings dates.
 
 Free sources only
   prices     Yahoo Finance via yfinance (no key)
-  rates      FRED CSV downloads (no key)
+  rates      US Treasury yield curves and New York Fed (no key), FRED as fallback
   headlines  Finnhub (free key in the FINNHUB_API_KEY environment variable;
              skipped if it is missing)
 
@@ -155,12 +155,49 @@ def unit_for(row_class: str, symbol: str) -> str:
 
 
 # ------------------------------------------------------- free web data ---
-def fetch_fred(series_id: str, since: pd.Timestamp) -> pd.Series:
+BROWSER_UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
+TREASURY_CSV = ("https://home.treasury.gov/resource-center/data-chart-center/"
+                "interest-rates/daily-treasury-rates.csv/{year}/all")
+
+
+def _get(url: str, params: dict | None = None, timeout: int = 20):
     import requests
-    url = "https://fred.stlouisfed.org/graph/fredgraph.csv"
-    r = requests.get(url, params={"id": series_id, "cosd": since.strftime("%Y-%m-%d")},
-                     timeout=30, headers={"User-Agent": "market-move-data"})
+    r = requests.get(url, params=params, timeout=timeout,
+                     headers={"User-Agent": BROWSER_UA, "Accept": "*/*"})
     r.raise_for_status()
+    return r
+
+
+def treasury_curve(kind: str, since: pd.Timestamp) -> pd.DataFrame:
+    """US Treasury daily yield curve (kind: 'daily_treasury_yield_curve' or
+    'daily_treasury_real_yield_curve'), all years from `since` to today."""
+    frames = []
+    for year in range(since.year, pd.Timestamp.today().year + 1):
+        r = _get(TREASURY_CSV.format(year=year),
+                 {"type": kind, "field_tdr_date_value": year, "page": "", "_format": "csv"})
+        df = pd.read_csv(io.StringIO(r.text))
+        df.columns = [c.strip().lower() for c in df.columns]
+        df["date"] = pd.to_datetime(df["date"], format="%m/%d/%Y")
+        frames.append(df.set_index("date"))
+    out = pd.concat(frames).sort_index()
+    return out[~out.index.duplicated()]
+
+
+def nyfed_target(since: pd.Timestamp) -> pd.DataFrame:
+    """Fed funds target range and effective rate from the New York Fed."""
+    r = _get("https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json",
+             {"startDate": since.strftime("%Y-%m-%d"),
+              "endDate": pd.Timestamp.today().strftime("%Y-%m-%d")})
+    rows = r.json().get("refRates", [])
+    df = pd.DataFrame(rows)
+    df["effectiveDate"] = pd.to_datetime(df["effectiveDate"])
+    return df.set_index("effectiveDate").sort_index()
+
+
+def fetch_fred(series_id: str, since: pd.Timestamp) -> pd.Series:
+    r = _get("https://fred.stlouisfed.org/graph/fredgraph.csv",
+             {"id": series_id, "cosd": since.strftime("%Y-%m-%d")}, timeout=15)
     df = pd.read_csv(io.StringIO(r.text))
     df.columns = ["date", "value"]
     df["value"] = pd.to_numeric(df["value"], errors="coerce")
@@ -168,14 +205,40 @@ def fetch_fred(series_id: str, since: pd.Timestamp) -> pd.Series:
     return pd.Series(df["value"].to_numpy(), index=pd.to_datetime(df["date"]))
 
 
-def load_fred(since: pd.Timestamp) -> dict:
-    """Download every FRED series once for the whole run."""
-    cache = {}
+def _col(df: pd.DataFrame, name: str) -> pd.Series:
+    s = pd.to_numeric(df[name], errors="coerce").dropna()
+    if s.empty:
+        raise RuntimeError(f"column {name} is empty")
+    return s
+
+
+def load_rates(since: pd.Timestamp) -> dict:
+    """Official sources first (Treasury, New York Fed), FRED as the fallback.
+    Returns {series_id: (Series, source) or Exception}."""
+    cache: dict = {}
+    try:
+        nom = treasury_curve("daily_treasury_yield_curve", since)
+        cache["DGS2"] = (_col(nom, "2 yr"), "US Treasury daily yield curve")
+        cache["DGS10"] = (_col(nom, "10 yr"), "US Treasury daily yield curve")
+    except Exception as e:
+        log(f"Treasury yield curve unavailable: {e}")
+    try:
+        real = treasury_curve("daily_treasury_real_yield_curve", since)
+        cache["DFII10"] = (_col(real, "10 yr"), "US Treasury daily real yield curve")
+    except Exception as e:
+        log(f"Treasury real yield curve unavailable: {e}")
+    try:
+        ny = nyfed_target(since)
+        cache["DFEDTARU"] = (_col(ny, "targetRateTo"), "Federal Reserve Bank of New York")
+        cache["DFEDTARL"] = (_col(ny, "targetRateFrom"), "Federal Reserve Bank of New York")
+    except Exception as e:
+        log(f"New York Fed rates unavailable: {e}")
     for sid in FRED_SERIES:
-        try:
-            cache[sid] = fetch_fred(sid, since)
-        except Exception as e:
-            cache[sid] = e
+        if sid not in cache:
+            try:
+                cache[sid] = (fetch_fred(sid, since), "FRED, St. Louis Fed")
+            except Exception as e:
+                cache[sid] = e
     return cache
 
 
@@ -183,18 +246,20 @@ def fred_block(t: pd.Timestamp, cache: dict, errors: list) -> dict:
     out = {}
     for sid, label in FRED_SERIES.items():
         try:
-            s = cache.get(sid)
-            if isinstance(s, Exception) or s is None:
-                raise RuntimeError(s)
+            got = cache.get(sid)
+            if isinstance(got, Exception) or got is None:
+                raise RuntimeError(got)
+            s, source = got
             s = s.loc[:t]
             if len(s) < 2:
                 raise RuntimeError("not enough observations")
             out[sid] = {"label": label, "date": str(s.index[-1].date()),
                         "value": float(s.iloc[-1]),
                         "change_bp": float((s.iloc[-1] - s.iloc[-2]) * 100),
-                        "note": "FRED lags about one business day"}
+                        "source": source,
+                        "note": "official end-of-day data; may lag the session by a day"}
         except Exception as e:
-            errors.append(f"FRED {sid}: {e}")
+            errors.append(f"Rates {sid}: {e}")
     return out
 
 
@@ -282,7 +347,7 @@ def build_session(prices: pd.DataFrame, watch: list[dict], t: pd.Timestamp,
         "session_date": str(t.date()),
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
         "sources": {"prices": "Yahoo Finance via yfinance (adjusted closes)",
-                    "rates": "FRED, Federal Reserve Bank of St. Louis",
+                    "rates": "US Treasury and New York Fed (FRED as fallback); see each series' source",
                     "headlines": "Finnhub" if news else "not fetched"},
         "method": {"move": "close on session_date vs the asset's previous close",
                    "sigma_window_days": SIGMA_WINDOW,
@@ -432,8 +497,8 @@ def main():
     network = not args.no_network
     fred_cache = None
     if network:
-        fred_cache = load_fred(targets[0] - pd.Timedelta(days=40))
-        log("FRED rates downloaded")
+        fred_cache = load_rates(targets[0] - pd.Timedelta(days=40))
+        log("Interest rates downloaded")
 
     key = os.environ.get("FINNHUB_API_KEY") or None
     news: dict = {}
