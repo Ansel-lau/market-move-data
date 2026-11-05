@@ -58,6 +58,14 @@ FRED_SERIES = {"DGS2": "US 2Y Treasury yield, %", "DGS10": "US 10Y Treasury yiel
                "DFEDTARU": "Fed funds target, upper bound, %",
                "DFEDTARL": "Fed funds target, lower bound, %"}
 FINNHUB = "https://finnhub.io/api/v1"
+FINNHUB_MIN_GAP = 1.1        # seconds between calls: stays under 60 calls/minute
+FINNHUB_BUDGET = 300         # stop asking Finnhub after 5 minutes in total
+T0 = time.time()
+
+
+def log(msg: str) -> None:
+    """Print with elapsed time, flushed at once so GitHub shows progress live."""
+    print(f"[{time.time() - T0:6.0f}s] {msg}", flush=True)
 
 
 # ------------------------------------------------------------- helpers ---
@@ -101,8 +109,9 @@ def download(symbols: list[str], end: pd.Timestamp | None, attempts: int = 3) ->
     last_err = None
     for i in range(attempts):
         try:
+            log(f"Downloading {len(symbols)} symbols from Yahoo (try {i + 1})")
             raw = yf.download(symbols, start=start, end=stop, auto_adjust=True,
-                              progress=False, threads=True)
+                              progress=False, threads=True, timeout=30)
             closes = raw["Close"] if isinstance(raw.columns, pd.MultiIndex) else raw[["Close"]]
             closes.index = _naive(closes.index)
             if closes.dropna(how="all").empty:
@@ -110,6 +119,7 @@ def download(symbols: list[str], end: pd.Timestamp | None, attempts: int = 3) ->
             return closes.sort_index()
         except Exception as e:  # network hiccups, rate limits
             last_err = e
+            log(f"Yahoo download problem: {e}")
             time.sleep(15 * (i + 1))
     raise RuntimeError(f"price download failed after {attempts} tries: {last_err}")
 
@@ -158,11 +168,25 @@ def fetch_fred(series_id: str, since: pd.Timestamp) -> pd.Series:
     return pd.Series(df["value"].to_numpy(), index=pd.to_datetime(df["date"]))
 
 
-def fred_block(t: pd.Timestamp, errors: list) -> dict:
+def load_fred(since: pd.Timestamp) -> dict:
+    """Download every FRED series once for the whole run."""
+    cache = {}
+    for sid in FRED_SERIES:
+        try:
+            cache[sid] = fetch_fred(sid, since)
+        except Exception as e:
+            cache[sid] = e
+    return cache
+
+
+def fred_block(t: pd.Timestamp, cache: dict, errors: list) -> dict:
     out = {}
     for sid, label in FRED_SERIES.items():
         try:
-            s = fetch_fred(sid, t - pd.Timedelta(days=40)).loc[:t]
+            s = cache.get(sid)
+            if isinstance(s, Exception) or s is None:
+                raise RuntimeError(s)
+            s = s.loc[:t]
             if len(s) < 2:
                 raise RuntimeError("not enough observations")
             out[sid] = {"label": label, "date": str(s.index[-1].date()),
@@ -174,36 +198,69 @@ def fred_block(t: pd.Timestamp, errors: list) -> dict:
     return out
 
 
+_last_call = [0.0]
+_finnhub_time = [0.0]
+
+
 def finnhub(path: str, params: dict, key: str):
     import requests
-    for i in range(3):
-        r = requests.get(f"{FINNHUB}/{path}", params={**params, "token": key}, timeout=20)
-        if r.status_code == 429:          # free tier: 60 calls/minute
-            time.sleep(20 * (i + 1))
-            continue
-        r.raise_for_status()
-        return r.json()
-    raise RuntimeError("Finnhub rate limit")
+    if _finnhub_time[0] > FINNHUB_BUDGET:
+        raise RuntimeError("Finnhub time budget used up; skipped")
+    started = time.time()
+    try:
+        for i in range(3):
+            wait = FINNHUB_MIN_GAP - (time.time() - _last_call[0])
+            if wait > 0:
+                time.sleep(wait)
+            _last_call[0] = time.time()
+            r = requests.get(f"{FINNHUB}/{path}", params={**params, "token": key}, timeout=20)
+            if r.status_code == 429:          # free tier: 60 calls/minute
+                time.sleep(10)
+                continue
+            r.raise_for_status()
+            return r.json()
+        raise RuntimeError("Finnhub rate limit")
+    finally:
+        _finnhub_time[0] += time.time() - started
 
 
-def headlines(symbol: str, t: pd.Timestamp, key: str) -> list[dict]:
-    items = finnhub("company-news", {"symbol": symbol,
-                                     "from": (t - pd.Timedelta(days=3)).strftime("%Y-%m-%d"),
-                                     "to": (t + pd.Timedelta(days=1)).strftime("%Y-%m-%d")}, key)
-    items = sorted(items or [], key=lambda x: x.get("datetime", 0), reverse=True)[:10]
+def load_company_news(symbol: str, first: pd.Timestamp, last: pd.Timestamp, key: str) -> list:
+    """One call per stock for the whole run; sessions are filtered later."""
+    return finnhub("company-news", {"symbol": symbol,
+                                    "from": (first - pd.Timedelta(days=3)).strftime("%Y-%m-%d"),
+                                    "to": (last + pd.Timedelta(days=1)).strftime("%Y-%m-%d")}, key) or []
+
+
+def load_earnings(symbol: str, first: pd.Timestamp, last: pd.Timestamp, key: str) -> list:
+    data = finnhub("calendar/earnings", {"symbol": symbol,
+                                         "from": (first - pd.Timedelta(days=4)).strftime("%Y-%m-%d"),
+                                         "to": (last + pd.Timedelta(days=30)).strftime("%Y-%m-%d")}, key)
+    return (data or {}).get("earningsCalendar", [])
+
+
+def headlines(items: list, t: pd.Timestamp) -> list[dict]:
+    lo = (t - pd.Timedelta(days=3)).timestamp()
+    hi = (t + pd.Timedelta(days=1, hours=12)).timestamp()
+    items = [i for i in items if lo <= i.get("datetime", 0) <= hi and i.get("headline")]
+    items = sorted(items, key=lambda x: x.get("datetime", 0), reverse=True)[:10]
     return [{"time_utc": datetime.fromtimestamp(i["datetime"], timezone.utc).strftime("%Y-%m-%d %H:%M"),
              "source": i.get("source"), "headline": i.get("headline"), "url": i.get("url")}
-            for i in items if i.get("headline")]
+            for i in items]
 
 
-def earnings(symbol: str, t: pd.Timestamp, key: str) -> list[dict]:
-    data = finnhub("calendar/earnings", {"symbol": symbol,
-                                         "from": (t - pd.Timedelta(days=4)).strftime("%Y-%m-%d"),
-                                         "to": (t + pd.Timedelta(days=30)).strftime("%Y-%m-%d")}, key)
+def earnings(cal: list, t: pd.Timestamp) -> list[dict]:
     hour = {"bmo": "before market open", "amc": "after market close", "dmh": "during market hours"}
-    return [{"date": e.get("date"), "time": hour.get(e.get("hour"), e.get("hour") or "unknown"),
-             "eps_estimate": e.get("epsEstimate"), "eps_actual": e.get("epsActual")}
-            for e in (data or {}).get("earningsCalendar", [])]
+    lo, hi = t - pd.Timedelta(days=4), t + pd.Timedelta(days=30)
+    out = []
+    for e in cal:
+        try:
+            d = pd.Timestamp(e.get("date"))
+        except Exception:
+            continue
+        if lo <= d <= hi:
+            out.append({"date": e.get("date"), "time": hour.get(e.get("hour"), e.get("hour") or "unknown"),
+                        "eps_estimate": e.get("epsEstimate"), "eps_actual": e.get("epsActual")})
+    return out
 
 
 def market_news(t: pd.Timestamp, key: str) -> list[dict]:
@@ -217,7 +274,8 @@ def market_news(t: pd.Timestamp, key: str) -> list[dict]:
 
 # --------------------------------------------------------- one session ---
 def build_session(prices: pd.DataFrame, watch: list[dict], t: pd.Timestamp,
-                  network: bool, finnhub_key: str | None, is_latest: bool) -> dict:
+                  fred_cache: dict | None, news: dict, is_latest: bool,
+                  general_news: list) -> dict:
     errors: list[str] = []
     out = {
         "schema": 1,
@@ -225,7 +283,7 @@ def build_session(prices: pd.DataFrame, watch: list[dict], t: pd.Timestamp,
         "generated_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M"),
         "sources": {"prices": "Yahoo Finance via yfinance (adjusted closes)",
                     "rates": "FRED, Federal Reserve Bank of St. Louis",
-                    "headlines": "Finnhub" if finnhub_key and network else "not fetched"},
+                    "headlines": "Finnhub" if news else "not fetched"},
         "method": {"move": "close on session_date vs the asset's previous close",
                    "sigma_window_days": SIGMA_WINDOW,
                    "attribution": "two-factor OLS on the 252 common trading days before the "
@@ -252,8 +310,8 @@ def build_session(prices: pd.DataFrame, watch: list[dict], t: pd.Timestamp,
                 out["sectors"].append({"etf": etf, "sector": name, "move_pct": c["move"]})
     out["sectors"].sort(key=lambda r: r["move_pct"], reverse=True)
 
-    if network:
-        out["fred"] = fred_block(t, errors)
+    if fred_cache is not None:
+        out["fred"] = fred_block(t, fred_cache, errors)
 
     for r in watch:
         a = {"ticker": r["ticker"], "name": r["name"], "class": r["class"],
@@ -320,19 +378,20 @@ def build_session(prices: pd.DataFrame, watch: list[dict], t: pd.Timestamp,
             a["notes"].append("Crypto trades 24/7; the move is close-to-close on Yahoo's UTC "
                               "daily bars and the latest bar may be partial.")
 
-        if r["news"] == "yes" and finnhub_key and network:
-            try:
-                a["headlines"] = headlines(sym, t, finnhub_key)
-                a["earnings"] = earnings(sym, t, finnhub_key)
-            except Exception as e:
-                errors.append(f"Finnhub {sym}: {e}")
+        if r["news"] == "yes" and sym in news:
+            n = news[sym]
+            if isinstance(n.get("news"), list):
+                a["headlines"] = headlines(n["news"], t)
+            else:
+                errors.append(f"Finnhub news {sym}: {n.get('news')}")
+            if isinstance(n.get("earnings"), list):
+                a["earnings"] = earnings(n["earnings"], t)
+            else:
+                errors.append(f"Finnhub earnings {sym}: {n.get('earnings')}")
         out["assets"].append(a)
 
-    if finnhub_key and network and is_latest:
-        try:
-            out["market_news"] = market_news(t, finnhub_key)
-        except Exception as e:
-            errors.append(f"Finnhub market news: {e}")
+    if is_latest:
+        out["market_news"] = general_news
     return clean(out)
 
 
@@ -355,6 +414,7 @@ def main():
         prices = pd.read_csv(args.prices_csv, parse_dates=["date"]).set_index("date").sort_index()
     else:
         prices = download(syms, end)
+    log("Price download finished")
     fix_rate_scale(prices)
 
     cal = prices[MARKET_CALENDAR].dropna()
@@ -367,20 +427,51 @@ def main():
     targets = list(sessions[-(args.backfill + 1):])
     latest = cal.index[-1]
 
+    log(f"Prices ready: {prices.shape[1]} symbols, sessions {targets[0].date()} to {targets[-1].date()}")
+
+    network = not args.no_network
+    fred_cache = None
+    if network:
+        fred_cache = load_fred(targets[0] - pd.Timedelta(days=40))
+        log("FRED rates downloaded")
+
     key = os.environ.get("FINNHUB_API_KEY") or None
+    news: dict = {}
+    general_news: list = []
+    if network and key:
+        for r in watch:
+            if r["news"] != "yes":
+                continue
+            entry = {}
+            for name, fn in (("news", load_company_news), ("earnings", load_earnings)):
+                try:
+                    entry[name] = fn(r["symbol"], targets[0], targets[-1], key)
+                except Exception as e:
+                    entry[name] = str(e)
+            news[r["symbol"]] = entry
+        if not args.date:
+            try:
+                general_news = market_news(latest, key)
+            except Exception as e:
+                log(f"Finnhub market news skipped: {e}")
+        log("Finnhub headlines and earnings downloaded")
+    elif network:
+        log("No FINNHUB_API_KEY set: headlines skipped")
+
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     for t in targets:
         is_latest = (t == latest) and not args.date
-        data = build_session(prices, watch, t, not args.no_network, key, is_latest)
+        data = build_session(prices, watch, t, fred_cache, news, is_latest,
+                             general_news if is_latest else [])
         text = json.dumps(data, indent=1, ensure_ascii=False)
         (out_dir / f"{t.date()}.json").write_text(text)
         if t == latest and not args.date:      # a past --date never overwrites latest
             (out_dir / "latest.json").write_text(text)
         n_err = len(data["errors"])
-        print(f"{t.date()}: {len(data['assets'])} assets written, {n_err} warnings")
+        log(f"{t.date()}: {len(data['assets'])} assets written, {n_err} warnings")
         for e in data["errors"]:
-            print(f"  warning: {e}")
+            log(f"  warning: {e}")
 
     dates = sorted(p.stem for p in out_dir.glob("20??-??-??.json"))
     (out_dir / "index.json").write_text(json.dumps(
