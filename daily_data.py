@@ -35,6 +35,7 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
@@ -116,12 +117,48 @@ def download(symbols: list[str], end: pd.Timestamp | None, attempts: int = 3) ->
             closes.index = _naive(closes.index)
             if closes.dropna(how="all").empty:
                 raise RuntimeError("Yahoo returned no data")
-            return closes.sort_index()
+            return to_daily(closes)
         except Exception as e:  # network hiccups, rate limits
             last_err = e
             log(f"Yahoo download problem: {e}")
             time.sleep(15 * (i + 1))
     raise RuntimeError(f"price download failed after {attempts} tries: {last_err}")
+
+
+def to_daily(closes: pd.DataFrame) -> pd.DataFrame:
+    """One row per calendar date. Yahoo can stamp 24/7 assets (crypto) at a
+    different time of day from US stocks; without this, BTC's row and SPY's row
+    for the same date would not line up."""
+    closes = closes.copy()
+    closes.index = pd.DatetimeIndex(closes.index).normalize()
+    return closes.sort_index().groupby(level=0).last()
+
+
+def drop_unfinished_session(prices: pd.DataFrame) -> pd.DataFrame:
+    """If New York's session is still open (before 4:30 pm New York time), drop
+    rows dated today: Yahoo's 'close' for today would be a live mid-session price."""
+    ny = datetime.now(ZoneInfo("America/New_York"))
+    if (ny.hour, ny.minute) >= (16, 30):
+        return prices
+    today = pd.Timestamp(ny.date())
+    n = int((prices.index >= today).sum())
+    if n:
+        log(f"New York time is {ny:%H:%M}: today's session is not finished, "
+            f"so {n} row(s) dated {today.date()} are ignored")
+    return prices.loc[prices.index < today]
+
+
+def report_stale(prices: pd.DataFrame) -> None:
+    """Log any symbol whose latest price is older than the US calendar's latest day."""
+    cal = prices[MARKET_CALENDAR].dropna()
+    if cal.empty:
+        return
+    last = cal.index[-1]
+    stale = {s: prices[s].dropna().index[-1].date() for s in prices.columns
+             if not prices[s].dropna().empty and prices[s].dropna().index[-1] < last}
+    if stale:
+        log(f"Latest price older than {MARKET_CALENDAR}'s ({last.date()}): " +
+            ", ".join(f"{s} {d}" for s, d in sorted(stale.items())))
 
 
 def fix_rate_scale(prices: pd.DataFrame) -> None:
@@ -148,6 +185,21 @@ def change(series: pd.Series, t: pd.Timestamp, kind: str):
     sigma = move / sd if len(hist) >= 20 and sd and not np.isnan(sd) else None
     return {"close": float(s.iloc[-1]), "prev_date": str(s.index[-2].date()),
             "move": move, "sigma": sigma}
+
+
+def rate_sigma(cache: dict | None, sid: str, t: pd.Timestamp):
+    """Sigma for an official rate series: today's bp change divided by the
+    standard deviation of its previous SIGMA_WINDOW daily bp changes."""
+    got = (cache or {}).get(sid)
+    if not got or isinstance(got, Exception):
+        return None
+    s = got[0].dropna().loc[:t]
+    diffs = s.diff() * 100
+    hist = diffs.iloc[1:-1].tail(SIGMA_WINDOW)
+    sd = hist.std(ddof=1)
+    if len(hist) < 20 or not sd or np.isnan(sd):
+        return None
+    return float(diffs.iloc[-1] / sd)
 
 
 def unit_for(row_class: str, symbol: str) -> str:
@@ -385,12 +437,26 @@ def build_session(prices: pd.DataFrame, watch: list[dict], t: pd.Timestamp,
         if sym.startswith("fred:"):
             sid = sym.split(":", 1)[1]
             f = out["fred"].get(sid)
-            if f:
+            a["attribution"] = {"na_reason": "no split for rates, FX, policy or the market itself"}
+            if not f:
+                a["notes"].append(f"Official rate data ({sid}) unavailable in this run.")
+            elif cls == "policy":
                 a.update({"close": f["value"], "as_of": f["date"], "move_bp": f["change_bp"],
-                          "sigma": None})
-                a["notes"].append("Policy rate from FRED; changes only at FOMC decisions.")
+                          "sigma": None, "source": f["source"]})
+                a["notes"].append(f"Policy rate from {f['source']}; changes only at FOMC decisions.")
+            elif f["date"] != str(t.date()):
+                # Official curve not published for this session yet: never show
+                # an older day's change as if it were this session's move.
+                a.update({"close": f["value"], "as_of": f["date"], "move_bp": None,
+                          "sigma": None, "source": f["source"]})
+                a["notes"].append(f"{f['source']} has not published {t.date()} yet; the latest "
+                                  f"value is from {f['date']}, so no move is computed.")
             else:
-                a["notes"].append("FRED data unavailable in this run.")
+                sig = rate_sigma(fred_cache, sid, t)
+                a.update({"close": f["value"], "as_of": f["date"], "move_bp": f["change_bp"],
+                          "sigma": sig, "source": f["source"],
+                          "above_2_sigma": (abs(sig) >= 2) if sig is not None else None})
+                a["notes"].append(f"Official end-of-day yield from {f['source']}.")
             out["assets"].append(a)
             continue
         if sym not in prices or prices[sym].dropna().empty:
@@ -479,13 +545,16 @@ def main():
         prices = pd.read_csv(args.prices_csv, parse_dates=["date"]).set_index("date").sort_index()
     else:
         prices = download(syms, end)
+        prices = drop_unfinished_session(prices)
     log("Price download finished")
     fix_rate_scale(prices)
+    report_stale(prices)
 
     cal = prices[MARKET_CALENDAR].dropna()
     if end is not None:
         if end not in cal.index:
-            sys.exit(f"{end.date()} was not a US trading session (no {MARKET_CALENDAR} price).")
+            sys.exit(f"{end.date()} was not a completed US trading session (no {MARKET_CALENDAR} close; "
+                     "a session still trading in New York is ignored until 4:30 pm New York time).")
         sessions = cal.loc[:end].index
     else:
         sessions = cal.index
@@ -497,7 +566,8 @@ def main():
     network = not args.no_network
     fred_cache = None
     if network:
-        fred_cache = load_rates(targets[0] - pd.Timedelta(days=40))
+        # 130 calendar days gives 60+ daily changes for the rate sigma
+        fred_cache = load_rates(targets[0] - pd.Timedelta(days=130))
         log("Interest rates downloaded")
 
     key = os.environ.get("FINNHUB_API_KEY") or None

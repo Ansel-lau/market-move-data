@@ -18,7 +18,9 @@ Claude reads these files from the raw URL, e.g.
 
 ## Sources (all free)
 - Prices: Yahoo Finance via `yfinance` (unofficial; update the library if it breaks)
-- Rates: FRED, Federal Reserve Bank of St. Louis
+- Rates: US Treasury daily yield curves and the New York Fed (FRED as a fallback).
+  The 2-year yield uses the Treasury curve (`fred:DGS2`), not Yahoo's `2YY=F`,
+  which is rarely updated.
 - Headlines and earnings dates: Finnhub (free key, stored as the
   `FINNHUB_API_KEY` repository secret, never in a file)
 

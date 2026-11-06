@@ -13,8 +13,8 @@ SPY,SPDR S&P 500 ETF,etf,SPY,,,QQQ IWM,no
 GOLD,Gold (front-month futures),commodity,GC=F,DX-Y.NYB,,SI=F GLD,no
 COPPER,Copper (COMEX front-month),commodity,HG=F,DX-Y.NYB,MCHI,FCX COPX,no
 OIL,Brent crude (front-month),commodity,BZ=F,DX-Y.NYB,,CL=F NG=F XLE,no
-US10Y,US 10-year Treasury yield,rate,^TNX,,,^FVX ^TYX 2YY=F,no
-US2Y,US 2-year Treasury yield,rate,2YY=F,,,^TNX,no
+US10Y,US 10-year Treasury yield,rate,^TNX,,,^FVX ^TYX,no
+US2Y,US 2-year Treasury yield,rate,fred:DGS2,,,,no
 FEDFUNDS,Fed funds target range (upper bound),policy,fred:DFEDTARU,,,,no
 DXY,US Dollar Index,fx,DX-Y.NYB,,,EURUSD=X JPY=X,no
 USDSGD,USD/SGD,fx,SGD=X,,,DX-Y.NYB CNH=X,no
