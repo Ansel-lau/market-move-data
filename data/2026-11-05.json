@@ -1,7 +1,7 @@
 {
  "schema": 1,
  "session_date": "2026-11-05",
- "generated_at_utc": "2026-11-06 02:28",
+ "generated_at_utc": "2026-11-06 05:47",
  "sources": {
   "prices": "Yahoo Finance via yfinance (adjusted closes)",
   "rates": "US Treasury and New York Fed (FRED as fallback); see each series' source",
@@ -41,26 +41,26 @@
   {
    "name": "US Dollar Index",
    "symbol": "DX-Y.NYB",
-   "close": 101.673,
-   "move_pct": 0.1606
+   "close": 101.55,
+   "move_pct": 0.0394
   },
   {
    "name": "Brent",
    "symbol": "BZ=F",
-   "close": 99.65,
-   "move_pct": 5.316
+   "close": 98.29,
+   "move_pct": 3.8787
   },
   {
    "name": "WTI",
    "symbol": "CL=F",
-   "close": 91.34,
-   "move_pct": 3.6541
+   "close": 90.52,
+   "move_pct": 2.7236
   },
   {
    "name": "Gold",
    "symbol": "GC=F",
-   "close": 4076.5,
-   "move_pct": 0.0859
+   "close": 4113.5,
+   "move_pct": 0.9944
   }
  ],
  "sectors": [
@@ -160,6 +160,12 @@
    },
    "headlines": [
     {
+     "time_utc": "2026-11-06 02:00",
+     "source": "Yahoo",
+     "headline": "America’s Rare Earth Reckoning Is Less Than 60 Days Away",
+     "url": "https://finnhub.io/api/news?id=eceecb88d04304a73eefc7a021cf19f1de09b4ca73eb24262cef2f8da3055d82"
+    },
+    {
      "time_utc": "2026-11-06 01:20",
      "source": "Yahoo",
      "headline": "Cathie Wood Sells $12.8 Million Of Alphabet, Days After The Stock Suffered Its Worst Day Since Its 2004 IPO, Losing Nearly Half A Trillion Dollars In Market Value",
@@ -176,6 +182,12 @@
      "source": "Yahoo",
      "headline": "Elon Musk's SpaceX Could Build More Data Center Capacity in 18 Months Than Google Did in 27 Years, Says SemiAnalysis",
      "url": "https://finnhub.io/api/news?id=8455b71862eb6d3b058fab84e6a0113af3474dc5b26cc6c22e9a2acff3b989e0"
+    },
+    {
+     "time_utc": "2026-11-06 00:12",
+     "source": "SeekingAlpha",
+     "headline": "Increased Distributions On Eaton Vance Income Funds",
+     "url": "https://finnhub.io/api/news?id=5340b1f9bc83173a1884fbbb905a655f31eb95fdd6411d81e8d6a73ce2d63520"
     },
     {
      "time_utc": "2026-11-05 23:45",
@@ -206,18 +218,6 @@
      "source": "Yahoo",
      "headline": "Quantinuum’s Revenue Triples. What It Really Wants Is Quantum for the Masses.",
      "url": "https://finnhub.io/api/news?id=248e738a2a54ec1d1ec1bde6983bf1280bc0ee08a0fb20eca10604b64ef923cd"
-    },
-    {
-     "time_utc": "2026-11-05 22:33",
-     "source": "Yahoo",
-     "headline": "Docusign vs. Monday.com: Which Technology Stock Is a Better Buy for 2027?",
-     "url": "https://finnhub.io/api/news?id=dc5fc348f7865558dc3b5986e30c445cc57d26fc56dc1db71f735f60cc26fad3"
-    },
-    {
-     "time_utc": "2026-11-05 22:31",
-     "source": "Yahoo",
-     "headline": "Marc Chaikin Sees Alphabet (GOOGL) as a Conglomerate Hiding Three World-Class Businesses",
-     "url": "https://finnhub.io/api/news?id=38c9f578f7d7d19237a46d6da653ae367f14aa8186a06584b505f319a995db4c"
     }
    ],
    "earnings": []
@@ -260,6 +260,18 @@
     }
    },
    "headlines": [
+    {
+     "time_utc": "2026-11-06 02:18",
+     "source": "Yahoo",
+     "headline": "3 Philippine Consumer Staples Stocks To Watch After Inflation Hit 7.8%",
+     "url": "https://finnhub.io/api/news?id=fbabb64d8e963ffeed7276918b5ffb1d13261691b50f3f4a63dd261191b6f2a8"
+    },
+    {
+     "time_utc": "2026-11-06 01:56",
+     "source": "Yahoo",
+     "headline": "Asian markets follow US rout as AI investment jitters spread",
+     "url": "https://finnhub.io/api/news?id=41a452161f8b505a65e59de6da1e0ff387578352c44982764bb4cb6e633f7698"
+    },
     {
      "time_utc": "2026-11-06 00:50",
      "source": "Yahoo",
@@ -307,18 +319,6 @@
      "source": "Yahoo",
      "headline": "SoftBank's $5.4 billion AI bet hits a stunning roadblock",
      "url": "https://finnhub.io/api/news?id=442cde5e75888f39993d9139a054797a9dc3655ccc45891b4304d57abd2cbbb8"
-    },
-    {
-     "time_utc": "2026-11-05 19:29",
-     "source": "Yahoo",
-     "headline": "SpaceX Stock Is Still Falling. It Trades At Apple’s Valuation.",
-     "url": "https://finnhub.io/api/news?id=48156ee18f765962ec49ad55aa4e83d0b33dfd686657ae74cfa16e36f84c62ee"
-    },
-    {
-     "time_utc": "2026-11-05 19:11",
-     "source": "Yahoo",
-     "headline": "Meta (META) Acquires Conductor As New U.S. AI Rules Cloud The Payoff",
-     "url": "https://finnhub.io/api/news?id=c34d72aced51447459258a157916ffd768166c5677ddd29f095687b7b0de2493"
     }
    ],
    "earnings": []
@@ -376,6 +376,12 @@
      "url": "https://finnhub.io/api/news?id=6dd42ae027dea95376e43c5dceb9fcbb27c5119c785c8ac2a31c65ec22768a79"
     },
     {
+     "time_utc": "2026-11-06 00:12",
+     "source": "SeekingAlpha",
+     "headline": "Increased Distributions On Eaton Vance Income Funds",
+     "url": "https://finnhub.io/api/news?id=5340b1f9bc83173a1884fbbb905a655f31eb95fdd6411d81e8d6a73ce2d63520"
+    },
+    {
      "time_utc": "2026-11-05 23:21",
      "source": "Yahoo",
      "headline": "IREN (IREN) Draws Tighter Oversight On Neocloud Data Center Projects",
@@ -416,12 +422,6 @@
      "source": "Yahoo",
      "headline": "Best Mag7 dip buys: NVIDIA leads on valuation, Alphabet on RSI",
      "url": "https://finnhub.io/api/news?id=496eac2bb303ceb2a17a87dc0bb8ab068c59af155a51972a772f76d316dff50c"
-    },
-    {
-     "time_utc": "2026-11-05 20:54",
-     "source": "Yahoo",
-     "headline": "Sector Update: Tech Stocks Tumble Late Afternoon",
-     "url": "https://finnhub.io/api/news?id=b09c99c05b625d5e26e41417ccf8cb6c92fd9f31f152b6b7dcbd6ea29b0d62d5"
     }
    ],
    "earnings": []
@@ -771,7 +771,7 @@
    },
    "peers": {
     "LKNCY": {
-     "move_pct": -3.164
+     "move_pct": -3.8897
     },
     "SBUX": {
      "move_pct": -3.227
@@ -839,8 +839,8 @@
     "move_pct": -3.71,
     "interval_start": "2026-11-04",
     "market_pp": -4.9,
-    "sector_pp": 0.5,
-    "specific_pp": 0.8,
+    "sector_pp": 0.6,
+    "specific_pp": 0.6,
     "beta_market": 1.12,
     "beta_sector": -1.12,
     "r2": 0.753,
@@ -923,19 +923,19 @@
    "notes": [
     "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
    ],
-   "close": 4076.5,
+   "close": 4113.5,
    "prev_date": "2026-11-04",
-   "move_pct": 0.0859,
-   "sigma": 0.0635,
+   "move_pct": 0.9944,
+   "sigma": 0.7348,
    "above_2_sigma": false,
    "attribution": {
     "market": "DX-Y.NYB",
     "sector": null,
-    "move_pct": 0.09,
+    "move_pct": 0.99,
     "interval_start": "2026-11-04",
-    "market_pp": -0.3,
+    "market_pp": -0.1,
     "sector_pp": null,
-    "specific_pp": 0.4,
+    "specific_pp": 1.1,
     "beta_market": -2.09,
     "beta_sector": null,
     "r2": 0.145,
@@ -947,7 +947,7 @@
    },
    "peers": {
     "SI=F": {
-     "move_pct": -0.307
+     "move_pct": 0.2168
     },
     "GLD": {
      "move_pct": 0.8054
@@ -962,19 +962,19 @@
    "notes": [
     "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
    ],
-   "close": 6.2705,
+   "close": 6.249,
    "prev_date": "2026-11-04",
-   "move_pct": -2.0693,
-   "sigma": -1.5418,
+   "move_pct": -2.4051,
+   "sigma": -1.792,
    "above_2_sigma": false,
    "attribution": {
     "market": "DX-Y.NYB",
     "sector": "MCHI",
-    "move_pct": -2.07,
+    "move_pct": -2.41,
     "interval_start": "2026-11-04",
-    "market_pp": -0.3,
-    "sector_pp": 0.7,
-    "specific_pp": -2.5,
+    "market_pp": -0.1,
+    "sector_pp": 0.6,
+    "specific_pp": -2.9,
     "beta_market": -1.71,
     "beta_sector": 0.56,
     "r2": 0.238,
@@ -1001,15 +1001,15 @@
    "notes": [
     "Continuous front-month futures: check for a contract roll if the move looks out of line with news."
    ],
-   "close": 99.65,
+   "close": 98.29,
    "prev_date": "2026-11-04",
-   "move_pct": 5.316,
-   "sigma": 1.8705,
+   "move_pct": 3.8787,
+   "sigma": 1.3647,
    "above_2_sigma": false,
    "attribution": {
     "market": "DX-Y.NYB",
     "sector": null,
-    "move_pct": 5.32,
+    "move_pct": 3.88,
     "interval_start": "2026-11-04",
     "market_pp": null,
     "sector_pp": null,
@@ -1023,10 +1023,10 @@
    },
    "peers": {
     "CL=F": {
-     "move_pct": 3.6541
+     "move_pct": 2.7236
     },
     "NG=F": {
-     "move_pct": 0.6083
+     "move_pct": -0.4055
     },
     "XLE": {
      "move_pct": -2.9754
@@ -1053,9 +1053,6 @@
     },
     "^TYX": {
      "move_bp": -3.1
-    },
-    "2YY=F": {
-     "move_bp": 0.0
     }
    }
   },
@@ -1063,21 +1060,19 @@
    "ticker": "US2Y",
    "name": "US 2-year Treasury yield",
    "class": "rate",
-   "symbol": "2YY=F",
-   "notes": [],
-   "close": 4.775,
-   "prev_date": "2026-11-04",
-   "move_bp": 0.0,
-   "sigma": 0.0,
-   "above_2_sigma": false,
+   "symbol": "fred:DGS2",
+   "notes": [
+    "Official end-of-day yield from US Treasury daily yield curve."
+   ],
    "attribution": {
     "na_reason": "no split for rates, FX, policy or the market itself"
    },
-   "peers": {
-    "^TNX": {
-     "move_bp": -5.7
-    }
-   }
+   "close": 4.46,
+   "as_of": "2026-11-05",
+   "move_bp": -12.0,
+   "sigma": -2.1769,
+   "source": "US Treasury daily yield curve",
+   "above_2_sigma": true
   },
   {
    "ticker": "FEDFUNDS",
@@ -1085,12 +1080,16 @@
    "class": "policy",
    "symbol": "fred:DFEDTARU",
    "notes": [
-    "Policy rate from FRED; changes only at FOMC decisions."
+    "Policy rate from Federal Reserve Bank of New York; changes only at FOMC decisions."
    ],
+   "attribution": {
+    "na_reason": "no split for rates, FX, policy or the market itself"
+   },
    "close": 4.0,
    "as_of": "2026-11-04",
    "move_bp": 0.0,
-   "sigma": null
+   "sigma": null,
+   "source": "Federal Reserve Bank of New York"
   },
   {
    "ticker": "DXY",
@@ -1098,10 +1097,10 @@
    "class": "fx",
    "symbol": "DX-Y.NYB",
    "notes": [],
-   "close": 101.673,
+   "close": 101.55,
    "prev_date": "2026-11-04",
-   "move_pct": 0.1606,
-   "sigma": 0.5495,
+   "move_pct": 0.0394,
+   "sigma": 0.1348,
    "above_2_sigma": false,
    "attribution": {
     "na_reason": "no split for rates, FX, policy or the market itself"
@@ -1131,7 +1130,7 @@
    },
    "peers": {
     "DX-Y.NYB": {
-     "move_pct": 0.1606
+     "move_pct": 0.0394
     }
    }
   },
@@ -1189,6 +1188,18 @@
  },
  "market_news": [
   {
+   "time_utc": "2026-11-06 02:49",
+   "source": "Reuters",
+   "headline": "Oil set for sharp weekly drop but Middle East supply concerns provide floor - Reuters",
+   "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOR0loTjAtWUlkbnpIR2huZE8zWWkxZHZIZlprNlQ5Z3BSaGUxcnE1ZDdqbXFuOHFpQVdrbzEyNnRUSGR4ZDh3SEpqQkpqX2NZa0JlZjEyZlp3RElJMFlhVDRLLTZ3MzRuV2NuTXR3SjhQejExMVR4eE10YThVcmJYaTdNYmt1SjJfeG10NlJRRFB1SFNQUlRSanFrYzBFUjlZNjBGMjhxSi1MZG1sd19kWGU0Ykt5bmR4by1B?oc=5"
+  },
+  {
+   "time_utc": "2026-11-06 02:04",
+   "source": "Reuters",
+   "headline": "As high oil prices curb demand, fresh signs of glut appear - Reuters",
+   "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQem82aUU3S0NZWXNNcXlreW9xS3J0UnpIcDNCWVdqS3NyclRxSUtWenpmMEhoNmp6amtNSG5ZYmpuMzc1TElxODVYTmVSZURrYjJsbVliVXlVSzNtM3J5TDBMNl9sQ0JSTmxKQ2RxVzc4RnMxX2lIZGp3Y3kwTFdrUndLZkFMN0JkN2xLTi02dDZjT0x1Wk0ySTMxZlpNZWRmX1F6ZDhR?oc=5"
+  },
+  {
    "time_utc": "2026-11-05 23:20",
    "source": "Reuters",
    "headline": "Hegseth vows to keep fighting from Pentagon, defends Iran war - Reuters",
@@ -1231,6 +1242,18 @@
    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxONXl2TW1pRDd2eEFya2FTU0pkOWJWd3lFZG1PdUdSNlBWTVR5VGp3UWtLb2E0Ri1iTmt1SWhRckdOVVhkN2ItZ1Y2QlhjT2NrcGR0ZTg3MklhcENpZUFOM0I1SDRYdTZwMFlYeGMwMTM1SWF5ZzNnd2h4ZnJ1bC1BZWhlNDlYUXM3S3FRdXVyR1p3SE5GYUFoMm1wSWRYSlBYY3NkcTBpVklrTnZibm51eURCWkszdHBtdU9vYQ?oc=5"
   },
   {
+   "time_utc": "2026-11-05 20:38",
+   "source": "Reuters",
+   "headline": "Across Tehran, billboards threaten Trump, Israel - Reuters",
+   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQRE5zQkdSYVNyRXplTGY4dXF1VmFOTk5peGlUZzFJOHFGY0dudUVjQTZ4XzJ2VmNpc2ZLOTZTd0h2amVDYTBpXzVqWlBIaWJqcE9zRENCTjRfeE9hc0t3M2RuNDNnbHFDYUpjY1NRTTY0cW9oTWc0YmtXU3ZrZjZPTFIzNjhaaDBwRERBbWVUd3RnRDNUamc?oc=5"
+  },
+  {
+   "time_utc": "2026-11-05 20:23",
+   "source": "Reuters",
+   "headline": "Ukraine expects fresh support after US mid-terms, minister says - Reuters",
+   "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQc3BIUVNjZ1pLUVNfRnZ6NDB3T1VIRktQUjJjUVl5OFEyRkpRVnlHSTFZQmFSOWxRek1VaHlrelFpUUtPU1BETUtTWUdBczBmNi1EUzlmbjV4SW1IRGlqOEE0NThVN2FCMjBnbkhzUURwVHFjTEctdUw4NUpsekNWZ0huLXNQT0lfbWt4UENrR0dVb0RGSHNlT0FtazRtRWZzYVd4MkcxTQ?oc=5"
+  },
+  {
    "time_utc": "2026-11-05 20:06",
    "source": "CNBC",
    "headline": "How Wall Street's postelection rally got obliterated — and what's next",
@@ -1253,30 +1276,6 @@
    "source": "CNBC",
    "headline": "We're dipping into our large cash pile to buy this bank on Thursday's sell-off",
    "url": "https://www.cnbc.com/investingclub/2026/11/05/were-dipping-into-our-cash-to-buy-this-bank-on-thursdays-sell-off.html"
-  },
-  {
-   "time_utc": "2026-11-05 17:34",
-   "source": "CNBC",
-   "headline": "Wall Street's fear gauge surges the most since April. Why traders think it should be even higher",
-   "url": "https://www.cnbc.com/2026/11/05/wall-streets-fear-gauge-surges-the-most-since-april-why-traders-think-it-should-be-even-higher.html"
-  },
-  {
-   "time_utc": "2026-11-05 17:34",
-   "source": "Reuters",
-   "headline": "Across Tehran, billboards threaten Trump, Israel - Reuters",
-   "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQRE5zQkdSYVNyRXplTGY4dXF1VmFOTk5peGlUZzFJOHFGY0dudUVjQTZ4XzJ2VmNpc2ZLOTZTd0h2amVDYTBpXzVqWlBIaWJqcE9zRENCTjRfeE9hc0t3M2RuNDNnbHFDYUpjY1NRTTY0cW9oTWc0YmtXU3ZrZjZPTFIzNjhaaDBwRERBbWVUd3RnRDNUamc?oc=5"
-  },
-  {
-   "time_utc": "2026-11-05 17:11",
-   "source": "Reuters",
-   "headline": "Bank of England raises rates for first time since 2023, warns more likely - Reuters",
-   "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNcEhfdUpzSlRCb2JiYmFYMjdxaEZySFE1cEJFcVlEWG1qajB4V2VGTXNmcGhRNHdBSF9Wa3FKcFpwMUpVVEc5NnQtaEhnQy0xUHpBc1lpZWp3TlZoUEhMQ1NHcFplMndKcmJJNEJrYlg2VnhoZlVJSkxnUDZzRzh2N0FuSlRHcl9JQTZ0LUhVMmxOaS1NWV9uWE15X19TN3pDMHFUeWNIdkRVQlYtemNsTQ?oc=5"
-  },
-  {
-   "time_utc": "2026-11-05 16:48",
-   "source": "CNBC",
-   "headline": "Las Vegas Raiders owner Mark Davis says he's 'not a fan' of sports gambling amid prediction market boom",
-   "url": "https://www.cnbc.com/2026/11/05/las-vegas-raiders-owner-mark-davis-on-sports-gambling-not-a-fan.html"
   }
  ],
  "errors": []
